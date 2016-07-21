@@ -22,24 +22,25 @@
 	<table class="table table-hover tb_st">
 	  <tr>
 	  	<td>这是评论</td>
-	  	<td>[<a href="#">修改</a>][<a href="#">删除</a>]</td>
+	  	<td>[<a href="#">删除</a>]</td>
 	  </tr>
 	  <tr>
 	  	<td>这是评论</td>
-	  	<td>[<a href="#">修改</a>][<a href="#">删除</a>]</td>
+	  	<td>[<a href="#">删除</a>]</td>
 	  </tr>
 	  <tr>
 	  	<td>这是评论</td>
-	  	<td>[<a href="#">修改</a>][<a href="#">删除</a>]</td>
+	  	<td>[<a href="#">删除</a>]</td>
 	  </tr>
 	  <tr>
 	  	<td>这是评论</td>
-	  	<td>[<a href="#">修改</a>][<a href="#">删除</a>]</td>
+	  	<td>[<a href="#">删除</a>]</td>
 	  </tr>
 	  <tr>
 	  	<td>这是评论</td>
-	  	<td>[<a href="#">修改</a>][<a href="#">删除</a>]</td>
+	  	<td>[<a href="#">删除</a>]</td>
 	  </tr>
+	  
 	  
 	</table>
 	<nav>

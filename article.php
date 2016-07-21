@@ -18,7 +18,7 @@
 	  <li role="presentation"><a href="user.php">用户管理</a></li>
 	</ul>
 	<div class="welcom">你好</div>
-
+<a href="add_article" class="btn btn-info">添加文章</a>
 	<table class="table table-hover tb_st">
 	  <tr>
 	  	<td><p>这是文章标题</p><p><em>这是文章摘要</em></p></td>

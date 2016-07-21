@@ -7,9 +7,11 @@
   </head>
   <style>
     .jumb{padding-left: 90px;height: 400px;padding-top: 130px;}
-    
+    body{margin-top: 60px;}
+    .input_from{padding-left: 150px;padding-top: 40px;width: 600px;}
+   .input_from input{width: 600px;}
   </style>
-<body >
+<body>
 <nav class="navbar navbar-default navbar-inverse navbar-fixed-top">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -26,7 +28,7 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">首页<span class="sr-only">(current)</span></a></li>
+        <li><a href="#">首页<span class="sr-only">(current)</span></a></li>
         <li><a href="#">分类1</a></li>
         <li><a href="#">分类2</a></li>
         <li><a href="#">分类3</a></li>
@@ -49,11 +51,33 @@
   </div><!-- /.container-fluid -->
 </nav>
 
-<div class="jumbotron jumb">
-  <h1>DOD 2016!</h1>
-  <p>Welcome</p>
-</div>
+<div class="input_from">
+<form method="post">
 
+  <div class="form-group">
+    <label for="exampleInputEmail1">用户名：</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Username" name="username">
+  </div>
+  <div class="alert alert-danger" role="alert">！用户名不符合规则</div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">密码：</label>
+    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password1">
+  </div>
+  <div class="alert alert-danger" role="alert">！密码不符合规则</div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">重复密码：</label>
+    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password2">
+  </div>
+  <div class="alert alert-danger" role="alert">！两次输入不符合</div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">邮箱：</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email" name="email">
+    <div class="alert alert-danger" role="alert">！Email不符合规则</div>
+  </div>
+  
+  <button type="submit" class="btn btn-default">提交</button>
+</form>
+</div>
 
 <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
 <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>

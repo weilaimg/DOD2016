@@ -18,7 +18,7 @@
 	  <li role="presentation"><a href="user.php">用户管理</a></li>
 	</ul>
 	<div class="welcom">你好</div>
-
+<a href="add_cate.php" class="btn btn-info">添加分类</a>
 	<table class="table table-hover tb_st">
 	  <tr>
 	  	<td>这是分类</td>
