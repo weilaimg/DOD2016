@@ -8,4 +8,6 @@ class Cate_model extends CI_Model{
 		$data = $this -> db -> get('cate') -> result_array();
 		return $data;
 	}
+
+	
 }

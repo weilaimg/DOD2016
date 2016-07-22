@@ -23,7 +23,7 @@
 	<?php foreach ($category as $v): ?>
 	  <tr>
 	  	<td><?php echo $v['cname']; ?></td>
-	  	<td>[<a href="#">修改</a>][<a href="#">删除</a>]</td>
+	  	<td>[<a href="<?php echo site_url('admin/edit_cate').'/'.$v['cid']; ?>">修改</a>][<a href="#">删除</a>]</td>
 	  </tr>
 	<?php endforeach; ?>
 	  

@@ -21,14 +21,16 @@
 	</ul>
   
 	<div class="indev">
+
 <div class="input_from">
-<form action="<?php echo site_url(); ?>" method="post">
+<form action="<?php echo site_url('admin/check_cate'); ?>" method="post">
 
   <div class="form-group">
     <label for="exampleInputEmail1">分类：</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Username" name="username" />
+    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="请输入分类" name="cate" value=" <?php if(isset($cname)) echo $cname; ?><?php echo set_value('cate'); ?>" />
   </div>
-  <div class="alert alert-danger" role="alert">！用户名不符合规则</div>
+ <?php if(validation_errors()) echo '<div class="alert alert-danger" role="alert">'.validation_errors().' </div>'?>
+ <input type="text" name='cid' value='<?php if(isset($cid)) echo $cid; ?>'>
 <button type="submit" class="btn btn-default"> 提交 </button>
 
 </form>
