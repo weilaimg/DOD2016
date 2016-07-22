@@ -16,7 +16,9 @@
 	  <li role="presentation"><a href="<?php echo site_url('admin/load_article'); ?>">文章管理</a></li>
 	  <li role="presentation"><a href="comment.php">评论管理</a></li>
 	  <li role="presentation"><a href="user.php">用户管理</a></li>
+	  <li><a href=" <?php echo site_url('admin/log_out'); ?>">登出</a></li>
 	</ul>
+
 	<div class="welcom">你好</div>
 	<table class="table table-hover tb_st">
 
@@ -27,7 +29,7 @@
 
 	  <tr>
 			<td>用户名</td>
-			<td><?php echo $this -> session -> userdata('username'); ?></td>
+			<td><?php echo $_SESSION['nickname']; ?></td>
 		</tr>
 		<tr>
 			<td>登录IP</td>
@@ -35,7 +37,7 @@
 		</tr>
 		<tr>
 			<td>登录时间</td>
-			<td><?php echo date('y-m-d',$this -> session -> userdata('logintime')); ?></td>
+			<td><?php echo date('Y-m-d H:i:s',$_SESSION['logtime']); ?></td>
 		</tr>
 
 		<tr>

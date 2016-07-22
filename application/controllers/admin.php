@@ -1,10 +1,10 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 
-class Admin extends CI_Controller{
+class Admin extends DOD_Controller{
 
 	/**
-	 * 载入登录页面
+	 * 载入后台主页 
 	 */
 
 	public function load_admin(){
@@ -132,5 +132,32 @@ class Admin extends CI_Controller{
 		}
 	}
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	/**
+	 * 退出登陆
+	 */
+	public function log_out (){
+		unset($_SESSION['nickname']);
+		unset($_SESSION['uid']);
+		unset($_SESSION['logtime']);
+		p($_SESSION);
+		success('index/first','登出成功');
+	}
 
 }

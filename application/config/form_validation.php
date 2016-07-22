@@ -28,5 +28,19 @@ $config = array(
                                             'label' => '内容',
                                             'rules' => 'required|max_length[5000]|min_length[50]'
                                          )
-                                    )                          
+                                    ) ,
+                 'login'  => array(
+
+                                    array(
+                                            'field' => 'username',
+                                            'label' => '*用户名',
+                                            'rules' => 'required'
+                                         ),
+                                    array(
+                                            'field' => 'password',
+                                            'label' => '*密码',
+                                            'rules' => 'required'
+                                         )
+
+                                    )                       
                );

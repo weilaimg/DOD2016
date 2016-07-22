@@ -4,7 +4,7 @@ class Index extends CI_Controller {
 
 
 	public function first(){
-		echo 1;
+		$this -> load -> view('index/index');
 	}
 
 
