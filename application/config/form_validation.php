@@ -6,27 +6,27 @@ $config = array(
                                             'label' => '分类',
                                             'rules' => 'required|max_length[8]'
                                          )
-                                    )
-                 // 'email' => array(
-                 //                    array(
-                 //                            'field' => 'emailaddress',
-                 //                            'label' => 'EmailAddress',
-                 //                            'rules' => 'required|valid_email'
-                 //                         ),
-                 //                    array(
-                 //                            'field' => 'name',
-                 //                            'label' => 'Name',
-                 //                            'rules' => 'required|alpha'
-                 //                         ),
-                 //                    array(
-                 //                            'field' => 'title',
-                 //                            'label' => 'Title',
-                 //                            'rules' => 'required'
-                 //                         ),
-                 //                    array(
-                 //                            'field' => 'message',
-                 //                            'label' => 'MessageBody',
-                 //                            'rules' => 'required'
-                 //                         )
-                 //                    )                          
+                                    ),
+                 'article' => array(
+                                    array(
+                                            'field' => 'title',
+                                            'label' => '标题',
+                                            'rules' => 'required|max_length[15]'
+                                         ),
+                                    array(
+                                            'field' => 'info',
+                                            'label' => '摘要',
+                                            'rules' => 'required|max_length[40]'
+                                         ),
+                                    array(
+                                            'field' => 'cid',
+                                            'label' => '分类',
+                                            'rules' => 'required'
+                                         ),
+                                    array(
+                                            'field' => 'text',
+                                            'label' => '内容',
+                                            'rules' => 'required|max_length[5000]|min_length[50]'
+                                         )
+                                    )                          
                );

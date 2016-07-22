@@ -13,12 +13,18 @@
 	<ul class="nav nav-tabs">
 	  <li role="presentation" class="active"><a href="<?php echo site_url('admin/load_admin'); ?>">后台主页</a></li>
 	  <li role="presentation" ><a href="<?php echo site_url('admin/load_cate'); ?>">分类管理</a></li>
-	  <li role="presentation"><a href="article.php">文章管理</a></li>
+	  <li role="presentation"><a href="<?php echo site_url('admin/load_article'); ?>">文章管理</a></li>
 	  <li role="presentation"><a href="comment.php">评论管理</a></li>
 	  <li role="presentation"><a href="user.php">用户管理</a></li>
 	</ul>
 	<div class="welcom">你好</div>
 	<table class="table table-hover tb_st">
+
+		<tr>
+			<td colspan='2' class="th"><span class="span_server" style="float:left"></span>用户信息：</td>
+		</tr>
+
+
 	  <tr>
 			<td>用户名</td>
 			<td><?php echo $this -> session -> userdata('username'); ?></td>
@@ -33,7 +39,11 @@
 		</tr>
 
 		<tr>
-			<td colspan='2' class="th"><span class="span_server" style="float:left">&nbsp</span>服务器信息</td>
+			<td colspan='2' class="th"><span class="span_server" style="float:left">&nbsp</span></td>
+		</tr>
+
+		<tr>
+			<td colspan='2' class="th"><span class="span_server" style="float:left"></span>服务器信息：</td>
 		</tr>
 
 		<tr>

@@ -90,15 +90,47 @@ class Admin extends CI_Controller{
 		success('admin/load_cate','删除成功');
 	}
 
+	/**
+	 * 载入文章页面
+	 */
+	public function load_article(){
+		$this -> load -> view('admin/article');
+	}
 
 
+	/**
+	 * 载入添加文章页
+	 */
+	public function edit_article(){
+		$this -> load -> model ('cate_model','cate');
+		$data['category'] = $this -> cate -> check();
+		$this -> load -> helper('form');
+		$this -> load -> view('admin/add_article',$data);
+	}
 
-
-
-
-
-
-
+	/**
+	 * 验证文章输入
+	 */
+	public function check_article(){
+		
+		$this -> load -> model ('cate_model','cate');
+		$data['category'] = $this -> cate -> check();
+		$this -> load -> helper('form');
+		$this -> load -> library('form_validation');
+		$status = $this->form_validation->run('article');
+		if(!$status){
+			echo time();
+			$this -> load -> view ('admin/add_article',$data);
+		} else {
+			$data['title'] = $this -> input -> post('title');
+			$data['info'] = $this -> input -> post('info');
+			$data['cid'] = $this -> input -> post('cid');
+			$data['text'] = $this -> input -> post('text');
+			$data['time'] = time();
+			p($data);
+			echo '数据库操作';
+		}
+	}
 
 
 }
