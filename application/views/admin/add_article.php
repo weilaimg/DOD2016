@@ -13,12 +13,14 @@
 </head>
 <body>
 	<ul class="nav nav-tabs">
-	  <li role="presentation"><a href="<?php echo site_url('admin/load_admin'); ?>">后台主页</a></li>
-	  <li role="presentation" ><a href="<?php echo site_url('admin/load_cate'); ?>">分类管理</a></li>
-	  <li role="presentation" class="active"><a href="<?php echo site_url('admin/load_article'); ?>">文章管理</a></li>
-	  <li role="presentation"><a href="comment.php">评论管理</a></li>
-	  <li role="presentation"><a href="user.php">用户管理</a></li>
-	</ul>
+    <li role="presentation"><a href="<?php echo site_url('admin/load_admin'); ?>">后台主页</a></li>
+    <li role="presentation" ><a href="<?php echo site_url('admin/load_cate'); ?>">分类管理</a></li>
+    <li role="presentation" class="active"><a href="<?php echo site_url('admin/load_article'); ?>">文章管理</a></li>
+    <li role="presentation"><a href="comment.php">评论管理</a></li>
+    <li role="presentation"><a href="user.php">用户管理</a></li>
+    <li><a href=" <?php echo site_url('admin/log_out'); ?>">登出</a></li>
+  </ul>
+
 
 
 	<div class="indev">
