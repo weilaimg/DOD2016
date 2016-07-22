@@ -556,5 +556,51 @@ if ( ! function_exists('html_escape'))
 	}
 }
 
+
+
+
+
+function p($arr)
+{
+	echo '<pre>';
+	print_r($arr);
+	echo '</pre>';
+}
+
+
+function success ($url,$msg){
+	header('Content-Type:text/html;charset=utf-8');
+	$url = site_url($url);
+	echo "<script type='text/javascript'>";
+	echo "alert('$msg');";
+	echo "location.href='$url'</script>";
+	die; 
+}
+
+function error($msg){
+	header('Content-Type:text/html;charset=utf-8');
+	echo "<script type='text/javascript'>";
+	echo "alert('$msg');window.history.back()";
+	echo "</script>";
+	die;
+}
+
+function pushs($mess){
+	header('Content-Type:text/html;charset=utf-8');
+	$url = site_url('admin/login');
+	echo "<script type='text/javascript'>alert('$mess');location.href='$url'</script>";
+}
+
+
+
+
+
+
+
+
+
+
+
+
 /* End of file Common.php */
 /* Location: ./system/core/Common.php */

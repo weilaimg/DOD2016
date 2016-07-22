@@ -4,7 +4,7 @@ $config = array(
                                     array(
                                             'field' => 'cate',
                                             'label' => '分类',
-                                            'rules' => 'required|max_length[4]'
+                                            'rules' => 'required|max_length[8]'
                                          )
                                     )
                  // 'email' => array(

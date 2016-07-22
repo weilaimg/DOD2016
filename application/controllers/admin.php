@@ -30,7 +30,10 @@ class Admin extends CI_Controller{
 		$this -> load -> helper('form');
 		if($this -> uri -> segment(3)){
 		$data['cid'] = $this -> uri -> segment(3);
-		$data['cname'] = '数据库回调';
+		$this -> load -> model ('cate_model','cate');
+		$cname = $this -> cate -> check_by_cid($data['cid']);
+
+		$data['cname'] = $cname['0']['cname'];
 		$this -> load -> view ('admin/add_cate' ,$data);
 		} else {
 			$this -> load -> view ('admin/add_cate');
@@ -44,25 +47,57 @@ class Admin extends CI_Controller{
 	public function check_cate(){
 		$this -> load -> helper('form');
 		$this -> load -> library('form_validation');
-
+		$this -> load -> model ('cate_model','cate');
 		if($this->form_validation->run('cate')==false){
+
 			if ($this -> input -> post('cid')){
 				$data['cid'] = $this -> input -> post('cid');
 				$this -> load -> view ('admin/add_cate',$data);
+
 			} else {
+
 				$this -> load -> view ('admin/add_cate');
+			
 			}
 		} else {
 
 			if ($this -> input -> post('cid')){
-				echo '数据库操作cid';
+				$cname = $this -> input -> post('cate');
+				$cid = $this -> input -> post('cid');
+				$data = array(
+					'cname' => $cname
+					);
+				$this -> cate -> update_by_cid($cid,$data);
+				success('admin/load_cate','修改成功');
 
 			} else{
-				echo '数据库操作添加';
-				
+				$data = array(
+					'cname' => $this -> input -> post('cate')
+					);
+				$this -> cate -> add_cate($data);
+				success('admin/load_cate','添加成功');
 			}
 		}
 	}
+
+	/**
+	 * 删除分类
+	 */
+	public function del_cate(){
+		$this -> load -> model ('cate_model','cate');
+		$cid = $this -> uri -> segment(3);
+		$this -> cate -> del_cate($cid);
+		success('admin/load_cate','删除成功');
+	}
+
+
+
+
+
+
+
+
+
 
 
 
