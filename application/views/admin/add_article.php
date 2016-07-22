@@ -29,23 +29,29 @@
 
   <div class="form-group">
     <label for="exampleInputEmail1">标题：</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="请添写文章标题" name="title" value="<?php echo set_value('title'); ?>">
+    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="请添写文章标题" name="title" value=" <?php if(isset($article)) echo $article[0]['title']; ?> <?php echo set_value('title'); ?>">
   </div>
   <?php  if(form_error('title')) echo '<div class="alert alert-danger" role="alert"> '.form_error('title').' </div> '; ?>
 
 <div class="form-group">
     <label for="exampleInputPassword1">摘要：</label>
-    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="请填写摘要" name="info" value="<?php echo set_value('info'); ?>">
+    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="请填写摘要" name="info" value="<?php if(isset($article)) echo $article[0]['info']; ?><?php echo set_value('info'); ?>">
   </div>
   <?php  if(form_error('info')) echo '<div class="alert alert-danger" role="alert"> '.form_error('info').' </div> '; ?>
 
 <label for="exampleInputPassword1">分类：</label>
 <br />
+
+
+
 <?php foreach ($category as $v): ?>
 <label class="radio-inline">
   <input type="radio" name="cid" id="inlineRadio1" value="<?php echo $v['cid'] ?>" <?php echo set_radio('cid',$v['cid']); ?> > <?php echo $v['cname'] ?>
 </label>
 <?php endforeach; ?>
+
+
+
 
 <?php  if(form_error('cid')) echo '<div class="alert alert-danger" role="alert"> '.form_error('cid').' </div> '; ?>
 <br /><br />
@@ -60,10 +66,14 @@
         bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });
   </script>
   <textarea name="text" style="width: 100%;height:300px;">
-       <?php echo set_value('text'); ?>
+       <?php if(isset($article)) echo $article[0]['text']; ?><?php echo set_value('text'); ?>
 </textarea>
 <?php  if(form_error('text')) echo '<div class="alert alert-danger" role="alert"> '.form_error('text').' </div> '; ?>
 <br />
+
+
+<input type="text"  name="aid" value="<?php if(isset($article)) echo $article[0]['aid']; ?><?php echo set_value('aid'); ?>" />
+
 
   <button type="submit" class="btn btn-default">提交</button>
 </form>

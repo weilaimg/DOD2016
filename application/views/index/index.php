@@ -27,7 +27,9 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class="active"><a href="#">首页<span class="sr-only">(current)</span></a></li>
-        <li><a href="#">分类1</a></li>
+        <!-- <?php foreach ($cate as $v): ?>
+        <li><a href="#"><?php echo $v['cname']; ?></a></li>
+      <?php endforeach; ?> -->
         <li><a href="#">分类2</a></li>
         <li><a href="#">分类3</a></li>
         <li><a href="#">分类4</a></li>

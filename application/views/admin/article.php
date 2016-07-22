@@ -20,26 +20,13 @@
 	<div class="welcom">你好</div>
 <a href="<?php echo site_url('admin/edit_article'); ?>" class="btn btn-info">添加文章</a>
 	<table class="table table-hover tb_st">
+	<?php foreach($article as $v): ?>
 	  <tr>
-	  	<td><p>这是文章标题</p><p><em>这是文章摘要</em></p></td>
-	  	<td>[<a href="#">修改</a>][<a href="#">删除</a>]</td>
+	  	<td><p><?php echo $v['title']; ?></p><p><em><?php echo $v['info']; ?></em></p></td>
+	  	<td>[<a href="<?php echo site_url('admin/change_article').'/'.$v['aid']; ?>">修改</a>][<a href="#">删除</a>]</td>
 	  </tr>
-	  <tr>
-	  	<td><p>这是文章标题</p><p><em>这是文章摘要</em></p></td>
-	  	<td>[<a href="#">详情</a>][<a href="#">修改</a>][<a href="#">删除</a>]</td>
-	  </tr>
-	  <tr>
-	  	<td><p>这是文章标题</p><p><em>这是文章摘要</em></p></td>
-	  	<td>[<a href="#">详情</a>][<a href="#">修改</a>][<a href="#">删除</a>]</td>
-	  </tr>
-	  <tr>
-	  	<td><p>这是文章标题</p><p><em>这是文章摘要</em></p></td>
-	  	<td>[<a href="#">详情</a>][<a href="#">修改</a>][<a href="#">删除</a>]</td>
-	  </tr>
-	  <tr>
-	  	<td><p>这是文章标题</p><p><em>这是文章摘要</em></p></td>
-	  	<td>[<a href="#">详情</a>][<a href="#">修改</a>][<a href="#">删除</a>]</td>
-	  </tr>
+	<?php endforeach; ?>
+
 	</table>
 <nav>
   <ul class="pagination">

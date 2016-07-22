@@ -94,7 +94,11 @@ class Admin extends DOD_Controller{
 	 * 载入文章页面
 	 */
 	public function load_article(){
-		$this -> load -> view('admin/article');
+		$uid = $_SESSION['uid'];
+		$this -> load -> model ('article_model','article');
+		$data['article'] = $this -> article -> check_info($uid);
+		
+		$this -> load -> view('admin/article',$data);
 	}
 
 
@@ -119,18 +123,57 @@ class Admin extends DOD_Controller{
 		$this -> load -> library('form_validation');
 		$status = $this->form_validation->run('article');
 		if(!$status){
-			echo time();
+
 			$this -> load -> view ('admin/add_article',$data);
+
 		} else {
-			$data['title'] = $this -> input -> post('title');
-			$data['info'] = $this -> input -> post('info');
-			$data['cid'] = $this -> input -> post('cid');
-			$data['text'] = $this -> input -> post('text');
-			$data['time'] = time();
-			p($data);
-			echo '数据库操作';
+			$aid = $this -> input -> post('aid');
+			if(isset($aid))
+			{
+
+				$article =array(
+					'title' => $this -> input -> post('title'),
+					'info' => $this -> input -> post('info'),
+					'cid' => $this -> input -> post('cid'),
+					'text' => $this -> input -> post('text'),
+					'time' => time()
+					);
+
+				$this -> load -> model ('article_model','article');
+				$this -> article -> update_by_aid($aid,$article);
+				success('admin/load_article','修改成功');
+
+			} else {
+				$article = array (
+				'uid'=> $_SESSION['uid'],
+				'title' => $this -> input -> post('title'),
+				'info' => $this -> input -> post('info'),
+				'cid' => $this -> input -> post('cid'),
+				'text' => $this -> input -> post('text'),
+				'time' => time()
+				);
+				$this -> load -> model ('article_model','article');
+				$this -> article -> add_artile($article);
+				success('admin/load_article','添加成功');
+			}
 		}
 	}
+
+
+	/**
+	 * 载入修改页面
+	 */
+	public function change_article(){
+		$this -> load -> helper('form');
+		$aid = $this -> uri ->segment(3);
+		$this -> load -> model('article_model','article');
+		$this -> load -> model ('cate_model','cate');
+		$data['category'] = $this -> cate -> check();
+		$data['article'] = $this -> article ->check_by_aid($aid);
+		$this -> load -> view ('admin/add_article',$data);
+	}
+
+
 
 
 

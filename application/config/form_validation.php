@@ -24,9 +24,14 @@ $config = array(
                                             'rules' => 'required'
                                          ),
                                     array(
+                                            'field' => 'aid',
+                                            'label' => '',
+                                            'rules' => ''
+                                         ),
+                                    array(
                                             'field' => 'text',
                                             'label' => '内容',
-                                            'rules' => 'required|max_length[5000]|min_length[50]'
+                                            'rules' => 'required|max_length[10000]|min_length[50]'
                                          )
                                     ) ,
                  'login'  => array(
