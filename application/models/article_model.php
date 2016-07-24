@@ -36,8 +36,13 @@ class Article_model extends CI_Model{
 	}
 
 
-
-
+	/**
+	 * 通过CID获取相关分类全部文章 
+	 */
+	public function check_by_cid($cid){
+		$data = $this -> db -> select ('aid,title,nickname,info,time')->from('article')->where(array('cid'=>$cid))->join('user','article.uid=user.uid')->get()->result_array();
+		return $data;
+	}
 
 
 

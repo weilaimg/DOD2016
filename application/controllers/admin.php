@@ -128,9 +128,9 @@ class Admin extends DOD_Controller{
 
 		} else {
 			$aid = $this -> input -> post('aid');
-			if(isset($aid))
+			
+			if($aid)
 			{
-
 				$article =array(
 					'title' => $this -> input -> post('title'),
 					'info' => $this -> input -> post('info'),

@@ -20,17 +20,16 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">DOD2016</a>
+      <a class="navbar-brand" href="<?php echo site_url('index/first'); ?>">DOD2016</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">首页<span class="sr-only">(current)</span></a></li>
-
-        <li><a href="#">分类2</a></li>
-        <li><a href="#">分类3</a></li>
-        <li><a href="#">分类4</a></li>
+        <li class="active"><a href="<?php echo site_url('index/first'); ?>">首页<span class="sr-only">(current)</span></a></li>
+        <?php foreach($cate as $v): ?>
+        <li><a href="<?php echo site_url('index/load_article').'/'.$v['cid']; ?>"><?php echo $v['cname'] ?></a></li>
+      <?php endforeach; ?>
       
       </ul>
 
