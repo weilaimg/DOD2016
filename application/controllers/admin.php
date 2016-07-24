@@ -95,6 +95,7 @@ class Admin extends DOD_Controller{
 	 */
 	public function load_article(){
 		$uid = $_SESSION['uid'];
+		
 		$this -> load -> model ('article_model','article');
 		$data['article'] = $this -> article -> check_info($uid);
 		

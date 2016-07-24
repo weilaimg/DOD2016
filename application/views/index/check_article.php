@@ -63,7 +63,7 @@
 <h3><?php echo $article[0]['title']; ?><br />
 <small><?php echo $article[0]['info']; ?></small>
 </h3>
-<h4><small><?php echo $article[0]['cid'].date('Y-m-d H-i-m',$article[0]['time']); ?></small></h4>
+<h4><small><?php echo $article[0]['cname'].'&nbsp&nbsp'.'最后修改:'.date('Y-m-d H:i:m',$article[0]['time']); ?></small></h4>
 <?php echo $article[0]['text']; ?>
 <hr />
 </div>

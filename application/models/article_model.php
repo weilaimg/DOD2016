@@ -14,7 +14,8 @@ class Article_model extends CI_Model{
 	 * 查看摘要
 	 */
 	public function check_info($uid){
-		$data = $this -> db ->select('title,info,aid')->order_by('time','desc')-> get_where('article',array('uid' => $uid))->result_array();
+		//$data = $this -> db ->select('title,info,aid')->order_by('time','desc')-> get_where('article',array('uid' => $uid))->result_array();
+		$data = $this -> db -> select ('title,info,aid,cname')->from('article')->where(array('uid'=>$uid)) -> join('cate','article.cid=cate.cid')->get()->result_array();
 		return $data;
 	}
 
@@ -46,10 +47,13 @@ class Article_model extends CI_Model{
 
 
 
-
-
-
-
+	/**
+	 * 前台通过AID关联3表
+	 */
+	public function full_by_aid($aid){
+		$data = $this -> db -> select ('aid,title,nickname,info,text,time,cname')->from('article')->where(array('aid'=>$aid))->join('user','article.uid=user.uid')->join('cate','article.cid=cate.cid')->get()->result_array();
+		return $data;
+	}
 
 
 

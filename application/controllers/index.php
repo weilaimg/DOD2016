@@ -44,11 +44,18 @@ class Index extends CI_Controller {
 	 */
 
 	public function load_text(){
+		if(!isset($_SESSION)){
+				session_start();
+			}
+		if(isset($_SESSION['nickname'])){
+			$data['nickname']=$_SESSION['nickname'];
+		}
 		$this -> load -> model('cate_model','cate');
 		$data['cate'] = $this -> cate ->check();
 		$aid = $this -> uri ->segment(3);
 		$this -> load -> model ('article_model','article');
-		$data['article'] = $this -> article -> check_by_aid($aid);
+		$data['article'] = $this -> article -> full_by_aid($aid);
+		
 		$this -> load -> view('index/check_article',$data);
 	}
 
