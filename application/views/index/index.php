@@ -27,9 +27,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class="active"><a href="#">首页<span class="sr-only">(current)</span></a></li>
-        <!-- <?php foreach ($cate as $v): ?>
-        <li><a href="#"><?php echo $v['cname']; ?></a></li>
-      <?php endforeach; ?> -->
+
         <li><a href="#">分类2</a></li>
         <li><a href="#">分类3</a></li>
         <li><a href="#">分类4</a></li>
@@ -38,12 +36,20 @@
 
       <ul class="nav navbar-nav navbar-right">
         <!-- <li><a href="#">Link</a></li> -->
+        <?php  if(isset($nickname)){
+
+        echo '<li><a href="' .site_url('admin/load_admin').'">' .$nickname.'你好，点击进入&nbsp[个人中心]</a></li>';
+         }
+         else {
+          echo '<li><a href="' .site_url('index/first').'">对不起，您还未登录</a></li>';
+         }
+         ?>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">后台 <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">登录</a></li>
+            <li><a href="<?php echo site_url('login/load_login'); ?>">登录</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="#">注册</a></li>
+            <li><a href="<?php echo site_url('login/load_register'); ?>">注册</a></li>
           </ul>
         </li>
       </ul>

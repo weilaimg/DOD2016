@@ -47,5 +47,38 @@ $config = array(
                                             'rules' => 'required'
                                          )
 
-                                    )                       
+                                    )  ,
+                 'register'=>array(
+                                    array(
+                                            'field' => 'username',
+                                            'label' => '用户名',
+                                            'rules' => 'alpha_dash|required|max_length[15]'
+                                        ),
+                                    array(
+                                            'field' => 'nickname',
+                                            'label' => '昵称',
+                                            'rules' => 'required|max_length[10]'
+                                        ),
+                                    array(
+                                            'field' => 'password1',
+                                            'label' => '密码',
+                                            'rules' => 'required|alpha_dash|max_length[15]'
+                                        ),
+                                    array(
+                                            'field' => 'password2',
+                                            'label' => '二次输入密码',
+                                            'rules' => 'required|matches[password1]'
+                                        ),
+                                    array(
+                                            'field' => 'email',
+                                            'label' => 'Email',
+                                            'rules' => 'required|valid_emails'
+                                        ),
+                                    
+                                    
+
+
+
+
+                    )                     
                );

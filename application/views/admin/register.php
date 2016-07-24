@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Document</title>
-  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="<?php echo base_url(); ?>bootstrap/css/bootstrap.min.css">
   </head>
   <style>
     .jumb{padding-left: 90px;height: 400px;padding-top: 130px;}
@@ -52,27 +52,32 @@
 </nav>
 
 <div class="input_from">
-<form method="post">
+<form method="post" action=" <?php echo site_url('login/check_register'); ?> ">
 
   <div class="form-group">
     <label for="exampleInputEmail1">用户名：</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Username" name="username">
+    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="用户名只能包含英文字母、数字、下划线、或破折号" name="username" value="<?php echo set_value('username'); ?>">
   </div>
-  <div class="alert alert-danger" role="alert">！用户名不符合规则</div>
+  <?php if(form_error('username')) echo '<div class="alert alert-danger" role="alert">'. form_error('username').'</div>'  ?>
+  <div class="form-group">
+    <label for="exampleInputEmail1">昵称：</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="请填写您的昵称" name="nickname" value="<?php echo set_value('nickname'); ?>">
+  </div>
+  <?php if(form_error('nickname')) echo '<div class="alert alert-danger" role="alert">'. form_error('nickname').'</div>'  ?>
   <div class="form-group">
     <label for="exampleInputPassword1">密码：</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password1">
+    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="密码只能包含英文字母、数字、下划线、或破折号" name="password1">
   </div>
-  <div class="alert alert-danger" role="alert">！密码不符合规则</div>
+  <?php if(form_error('password1')) echo '<div class="alert alert-danger" role="alert">'. form_error('password1').'</div>'  ?>
   <div class="form-group">
     <label for="exampleInputPassword1">重复密码：</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password2">
+    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="重复输入密码" name="password2">
   </div>
-  <div class="alert alert-danger" role="alert">！两次输入不符合</div>
+  <?php if(form_error('password2')) echo '<div class="alert alert-danger" role="alert">'. form_error('password2').'</div>'  ?>
   <div class="form-group">
     <label for="exampleInputEmail1">邮箱：</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email" name="email">
-    <div class="alert alert-danger" role="alert">！Email不符合规则</div>
+    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="请填写您的Email地址" name="email" value="<?php echo set_value('email'); ?>">
+    <?php if(form_error('email')) echo '<div class="alert alert-danger" role="alert">'. form_error('email').'</div>'  ?>
   </div>
   
   <button type="submit" class="btn btn-default">提交</button>
