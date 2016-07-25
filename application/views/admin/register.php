@@ -22,34 +22,42 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">DOD2016</a>
+      <a class="navbar-brand" href="<?php echo site_url('index/first'); ?>">DOD2016</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="#">首页<span class="sr-only">(current)</span></a></li>
-        <li><a href="#">分类1</a></li>
-        <li><a href="#">分类2</a></li>
-        <li><a href="#">分类3</a></li>
-        <li><a href="#">分类4</a></li>
+        <li class="active"><a href="<?php echo site_url('index/first'); ?>">首页<span class="sr-only">(current)</span></a></li>
+        <?php foreach($cate as $v): ?>
+        <li><a href="<?php echo site_url('index/load_article').'/'.$v['cid']; ?>"><?php echo $v['cname'] ?></a></li>
+      <?php endforeach; ?>
       
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
         <!-- <li><a href="#">Link</a></li> -->
+        <?php  if(isset($nickname)){
+
+        echo '<li><a href="' .site_url('admin/load_admin').'">' .$nickname.'你好，点击进入&nbsp[个人中心]</a></li>';
+         }
+         else {
+          echo '<li><a href="' .site_url('login/load_login').'">对不起，您还未登录</a></li>';
+         }
+         ?>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">后台 <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">登录</a></li>
+            <li><a href="<?php echo site_url('login/load_login'); ?>">登录</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="#">注册</a></li>
+            <li><a href="<?php echo site_url('login/load_register'); ?>">注册</a></li>
           </ul>
         </li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+
 
 <div class="input_from">
 <form method="post" action=" <?php echo site_url('login/check_register'); ?> ">
@@ -77,7 +85,7 @@
   <div class="form-group">
     <label for="exampleInputEmail1">邮箱：</label>
     <input type="email" class="form-control" id="exampleInputEmail1" placeholder="请填写您的Email地址" name="email" value="<?php echo set_value('email'); ?>">
-    <?php if(form_error('email')) echo '<div class="alert alert-danger" role="alert">'. form_error('email').'</div>'  ?>
+    <?php if(form_error('email')) echo '<div class="alert alert-danger" role="alert">'. form_error('email').'</div>';  ?>
   </div>
   
   <button type="submit" class="btn btn-default">提交</button>

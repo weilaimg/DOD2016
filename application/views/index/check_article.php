@@ -42,9 +42,10 @@
         <?php  if(isset($nickname)){
 
         echo '<li><a href="' .site_url('admin/load_admin').'">' .$nickname.'你好，点击进入&nbsp[个人中心]</a></li>';
+        echo '<li><a href="'.site_url('admin/log_out').'">登出</a><li>';
          }
          else {
-          echo '<li><a href="' .site_url('index/first').'">对不起，您还未登录</a></li>';
+          echo '<li><a href="' .site_url('login/load_login').'">对不起，您还未登录</a></li>';
          }
          ?>
         <li class="dropdown">
@@ -69,21 +70,30 @@
 </div>
 
 <div class="commit">
+
   <ul>
-    <li>  <script type="text/javascript" src="<?php echo base_url(); ?>bootstrap/js/nicEdit.js"></script> <script type="text/javascript">
+  <?php if(isset($nickname)) {
+   echo  '<li> <form action="'.site_url('comment/check_comment').'" method="post"> <script type="text/javascript" src="'.base_url().'bootstrap/js/nicEdit.js"></script> <script type="text/javascript">
         bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });
+  
   </script>
-  <textarea name="area2" style="width: 100%;height:100px;">
-       在此输入正文
-</textarea><br /><hr /></li>
-  <li><h1>您还未登录，暂时不能评论</h1><br /><hr /></li>
-    <li><h5>这是评论人</h5><p>这是评论</p><h5><small>这是评论时间和楼层</small></h5><br /><hr /></li>
-    <li><h5>这是评论人</h5><p>这是评论</p><h5><small>这是评论时间和楼层</small></h5><br /><hr /></li>
-    <li><h5>这是评论人</h5><p>这是评论</p><h5><small>这是评论时间和楼层</small></h5><br /><hr /></li>
-    <li><h5>这是评论人</h5><p>这是评论</p><h5><small>这是评论时间和楼层</small></h5><br /><hr /></li>
-    <li><h5>这是评论人</h5><p>这是评论</p><h5><small>这是评论时间和楼层</small></h5><br /><hr /></li>
-    <li><h5>这是评论人</h5><p>这是评论</p><h5><small>这是评论时间和楼层</small></h5><br /><hr /></li>
-    <li><h5>这是评论人</h5><p>这是评论</p><h5><small>这是评论时间和楼层</small></h5><br /><hr /></li>
+  <textarea name="comment" style="width: 100%;height:100px;">';
+       if(set_value('comment'))echo set_value('comment');else echo '在此输入评论';
+echo '</textarea><br />';
+if(form_error('comment')) echo '<div class="alert alert-danger" role="alert">'. form_error('comment').'</div><br />' ;
+echo '<input type="text" name="aid" value="'.$article[0]['aid'].'">';
+
+echo '<button type="submit" class="btn btn-default">提交评论</button><hr /> </li></form>';
+
+}
+else {
+  echo '<li><h1>您还未登录，暂时不能评论</h1><br /><hr /></li>';
+} ?>
+
+    <?php foreach($comment as $v): ?>
+    <li><h5><?php echo $v['nickname']; ?></h5><p><?php echo $v['comment']; ?></p><h5><small><?php echo date('Y-m-d H:i:s',$v['time']).'&nbsp&nbsp'.$v['com_id'].'楼'; ?></small></h5><br /><hr /></li>
+    <?php endforeach; ?>
+    
   </ul>
 
 <ul class="pagination" style="margin-left:40px">

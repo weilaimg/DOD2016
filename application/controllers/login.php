@@ -14,7 +14,9 @@ class Login extends CI_Controller{
 		}else {
 
 			$this -> load -> helper('form');
-			$this -> load -> view ('admin/login');
+			$this -> load -> model('cate_model','cate');
+			$data['cate'] = $this -> cate ->check();
+			$this -> load -> view ('admin/login',$data);
 		}
 	}
 
@@ -48,11 +50,22 @@ class Login extends CI_Controller{
 		}
 	}
 
+
+	/**
+	 * 载入注册页面
+	 */
 	public function load_register(){
+		$this -> load -> model('cate_model','cate');
+		$data['cate'] = $this -> cate ->check();
 		$this -> load -> helper('form');
-		$this -> load -> view('admin/register');
+		$this -> load -> view('admin/register',$data);
 	}
 
+
+
+	/**
+	 * 验证注册输入
+	 */
 	public function check_register(){
 		$this -> load -> helper('form');
 		$this -> load -> library('form_validation');

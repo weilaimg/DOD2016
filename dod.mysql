@@ -69,6 +69,33 @@ INSERT INTO `dod_cate` VALUES (1,'PHP'),(2,'C/C++'),(4,'MYSQL'),(5,'LINUX'),(8,'
 UNLOCK TABLES;
 
 --
+-- Table structure for table `dod_comment`
+--
+
+DROP TABLE IF EXISTS `dod_comment`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `dod_comment` (
+  `com_id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
+  `uid` smallint(5) unsigned NOT NULL,
+  `aid` smallint(5) unsigned NOT NULL,
+  `comment` text NOT NULL,
+  `time` varchar(12) DEFAULT NULL,
+  PRIMARY KEY (`com_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `dod_comment`
+--
+
+LOCK TABLES `dod_comment` WRITE;
+/*!40000 ALTER TABLE `dod_comment` DISABLE KEYS */;
+INSERT INTO `dod_comment` VALUES (1,2,4,'<span style=\"color: rgb(0, 0, 0); font-family: -webkit-standard;\">“来，紫菲，肯定饿了吧？</span><br>','1469413230'),(2,2,4,'<span style=\"color: rgb(0, 0, 0); font-family: -webkit-standard;\">那以后李想没有再给我带早餐</span><br>','1469413535'),(3,2,4,'<span style=\"color: rgb(0, 0, 0); font-family: -webkit-standard;\">就咱俩是同乡，你叫许紫菲对吧</span><br>','1469414337'),(4,2,4,'<span style=\"color: rgb(0, 0, 0); font-family: -webkit-standard;\">我一进教室李想就向我招招手</span><br>','1469414392'),(5,2,4,'<span style=\"color: rgb(0, 0, 0); font-family: -webkit-standard;\">对其他人也不太认识</span><br>','1469414575'),(6,2,5,'<span style=\"color: rgb(0, 0, 0); font-family: -webkit-standard;\">在空闲里用很多</span><a href=\"http://www.duwenzhang.com/huati/shijian/index1.html\" style=\"color: rgb(51, 51, 51); font-family: -webkit-standard;\">时间</a><span style=\"color: rgb(0, 0, 0); font-family: -webkit-standard;\">来阅读</span><br>','1469414618'),(7,2,5,'<span style=\"color: rgb(0, 0, 0); font-family: -webkit-standard;\">朦胧漂泊的如烟记忆只能静静的观看</span><br>','1469414630'),(8,2,5,'<h3 style=\"font-family: \'Helvetica Neue\', Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);\">那一席梦的芳华</h3>','1469414646'),(9,2,5,'<span style=\"color: rgb(0, 0, 0); font-family: -webkit-standard;\">停留在今季的秋</span><br>','1469414662'),(10,2,3,'<span style=\"color: rgb(0, 0, 0); font-family: arial, \'Microsoft Yahei\', sans-serif; font-size: 15px; text-indent: 30px;\">一场摧枯拉朽的风暴</span><br>','1469414675'),(11,2,3,'<span style=\"color: rgb(0, 0, 0); font-family: arial, \'Microsoft Yahei\', sans-serif; font-size: 15px; text-indent: 30px;\">未雨绸缪，雨的肆虐</span><br>','1469414684');
+/*!40000 ALTER TABLE `dod_comment` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `dod_user`
 --
 
@@ -104,4 +131,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-07-24 13:30:02
+-- Dump completed on 2016-07-25 10:46:18

@@ -75,10 +75,14 @@ $config = array(
                                             'rules' => 'required|valid_emails'
                                         ),
                                     
-                                    
+                                     )      ,
+                     'comment'=>array(
+                                        array(
+                                            'field' => 'comment',
+                                            'label' => '评论',
+                                            'rules' => 'required|min_length[8]'
+                                        ),
+                                        
 
-
-
-
-                    )                     
+                                    )               
                );

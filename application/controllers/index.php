@@ -50,12 +50,16 @@ class Index extends CI_Controller {
 		if(isset($_SESSION['nickname'])){
 			$data['nickname']=$_SESSION['nickname'];
 		}
+		$this -> load -> helper('form');
 		$this -> load -> model('cate_model','cate');
 		$data['cate'] = $this -> cate ->check();
 		$aid = $this -> uri ->segment(3);
 		$this -> load -> model ('article_model','article');
 		$data['article'] = $this -> article -> full_by_aid($aid);
+		$this -> load -> model ('comment_model','comment');
+		$data['comment'] = $this -> comment -> check_by_aid($aid);
 		
+
 		$this -> load -> view('index/check_article',$data);
 	}
 
