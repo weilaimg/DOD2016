@@ -260,9 +260,44 @@ class Admin extends DOD_Controller{
 
 
 
+	/**
+	 * 载入密码修改页
+	 */
+	public function load_change_passwd(){
+		$this -> load -> helper('form');
+		$this -> load -> library('form_validation');
+		$this -> load -> view('admin/change_passwd');
+	}
 
+	/**
+	 * 验证新密码动作
+	 */
+	public function check_passwd(){
+		$this -> load -> helper('form');
+		$this -> load -> library('form_validation');
+		$status = $this -> form_validation -> run('passwd');
+		if($status){
+			
+			$uid = $_SESSION['uid'];
+			$this -> load -> model('login_model','login');
+			$old_passwd = $this -> login ->select_passwd_by_uid($uid);
 
-
+			if(md5($this->input->post('old_passwd'))!==$old_passwd[0]['password']){
+				error('原密码输入错误');die;
+			}
+			else{
+				$data['password'] = md5 ($this -> input -> post('new_passwd2'));
+				$this -> login -> update_passwd_by_uid($uid,$data);
+				unset($_SESSION['nickname']);
+				unset($_SESSION['uid']);
+				unset($_SESSION['logtime']);
+				success('login/load_login','密码修改成功');
+			}
+			
+		} else {
+			$this -> load -> view('admin/change_passwd');
+		}
+	}
 
 
 
@@ -296,7 +331,6 @@ class Admin extends DOD_Controller{
 		unset($_SESSION['nickname']);
 		unset($_SESSION['uid']);
 		unset($_SESSION['logtime']);
-		p($_SESSION);
 		success('index/first','登出成功');
 	}
 

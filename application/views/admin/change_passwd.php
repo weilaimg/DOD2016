@@ -7,6 +7,7 @@
 	<style>
 		.tb_st{margin-top: 40px;width: 600px;}
 		.welcom{margin-left: 10px;color: #5E65C1;line-height: 40px;}
+		.error{color:#F00;}
 	</style>
 </head>
 <body>
@@ -20,26 +21,25 @@
 	  <li><a href=" <?php echo site_url('admin/log_out'); ?>">登出</a></li>
 	</ul>
 	<div class="welcom"><?php echo $_SESSION['nickname']; ?>你好</div>
-
+	<form action=" <?php echo site_url('admin/check_passwd');?> " method="post">
 	<table class="table table-hover tb_st">
 	  <tr>
-	  	<td>您的用户名为：</td>
-	  	<td><?php echo $userinfo[0]['username']; ?></td>
+	  	<td>请输入旧密码：</td>
+	  	<td> <input type="password" name="old_passwd" value="<?php echo set_value('old_passwd');?>"> </td><td><span class="error"><?php echo form_error('old_passwd'); ?></span></td>
 	  </tr>
 	  <tr>
-	  	<td>您的昵称为：</td>
-	  	<td><?php echo $userinfo[0]['nickname']; ?></td>
+	  	<td>请输入新密码：</td>
+	  	<td><input type="password" name="new_passwd1" value="<?php echo set_value('new_passwd1');?>"> </td><td><span class="error"><?php echo form_error('new_passwd1');?></span></td>
 	  </tr>
 	  <tr>
-	  	<td>您的Email地址为：</td>
-	  	<td><?php echo $userinfo[0]['email']; ?></td>
+	  	<td>请再次输入新密码：</td>
+	  	<td><input type="password" name="new_passwd2" value="<?php echo set_value('new_passwd2');?>"></td><td><span class="error"><?php echo form_error('new_passwd2');?></span></td>
 	  </tr>
 	</table>
-	<nav>
- 
-</nav>
-<button><a href="<?php echo site_url('admin/load_change_user'); ?>">修改个人信息</a></button>
-<button><a href="<?php echo site_url('admin/load_change_passwd'); ?>">修改密码</a></button>
+	<input type="submit" value = '提交'>
+	</form>
+
+
 
 
 

@@ -34,4 +34,24 @@ class Login_model extends CI_Model{
 
 	}
 
+	/**
+	 * 通过UID调用用户旧密码
+	 */
+	public function select_passwd_by_uid($uid){
+		$data = $this -> db -> select ('password') -> from('user') ->where(array('uid'=>$uid))->get()->result_array();
+		return $data;
+	}
+
+
+	/**
+	 * 通过UID更新用户密码
+	 */
+	public function update_passwd_by_uid($uid,$data){
+		$this -> db -> update('user',$data,array('uid' => $uid));
+	}
+
+
+
+
+
 }

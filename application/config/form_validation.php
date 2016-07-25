@@ -102,6 +102,22 @@ $config = array(
                                             'label' => '*Email',
                                             'rules' => 'required|valid_emails'
                                         )  
+                                    ),
+                     'passwd'=>array(
+                                    array(
+                                            'field' => 'old_passwd',
+                                            'label' => '*旧密码',
+                                            'rules' => 'required|alpha_dash|max_length[15]'
+                                        ),
+                                    array(
+                                            'field' => 'new_passwd1',
+                                            'label' => '*新密码',
+                                            'rules' => 'required|alpha_dash|max_length[15]'
+                                        ), 
+                                    array(
+                                            'field' => 'new_passwd2',
+                                            'label' => '*二次输入密码',
+                                            'rules' => 'required|matches[new_passwd1]'
+                                        )
                                     )  
-
                );
