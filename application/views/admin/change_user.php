@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,48 +7,38 @@
 	<style>
 		.tb_st{margin-top: 40px;width: 600px;}
 		.welcom{margin-left: 10px;color: #5E65C1;line-height: 40px;}
+		.error{color:#F00;}
 	</style>
 </head>
 <body>
 	<ul class="nav nav-tabs">
 	  <li role="presentation"><a href="<?php echo site_url('admin/load_admin'); ?>">后台主页</a></li>
-	  <li role="presentation"  class="active"><a href="<?php echo site_url('admin/load_cate'); ?>">分类管理</a></li>
+	  <li role="presentation"><a href="<?php echo site_url('admin/load_cate'); ?>">分类管理</a></li>
 	  <li role="presentation"><a href="<?php echo site_url('admin/load_article'); ?>">文章管理</a></li>
-	  <li role="presentation"><a href="<?php echo site_url('admin/load_comment'); ?>">评论管理</a></li>
+	  <li role="presentation" ><a href="<?php echo site_url('admin/load_comment'); ?>">评论管理</a></li>
 	  <li role="presentation"><a href="<?php echo site_url('admin/load_userinfo'); ?>">隐私管理</a></li>
 	  <li role="presentation"><a href="<?php echo site_url('index/first'); ?>">前台首页</a></li>
 	  <li><a href=" <?php echo site_url('admin/log_out'); ?>">登出</a></li>
 	</ul>
 	<div class="welcom"><?php echo $_SESSION['nickname']; ?>你好</div>
-<a href="<?php echo site_url('admin/edit_cate'); ?>" class="btn btn-info">添加分类</a>
+	<form action=" <?php echo site_url('admin/check_userinfo');?> " method="post">
 	<table class="table table-hover tb_st">
-	<?php foreach ($category as $v): ?>
 	  <tr>
-	  	<td><?php echo $v['cname']; ?></td>
-	  	<td>[<a href="<?php echo site_url('admin/edit_cate').'/'.$v['cid']; ?>">修改</a>][<a href="<?php echo site_url('admin/del_cate').'/'.$v['cid']; ?>">删除</a>]</td>
+	  	<td>您的用户名为：</td>
+	  	<td> <input type="text" name="username" value="<?php if(isset($userinfo)) echo $userinfo[0]['username']; ?><?php echo set_value('username');?>"> </td><td><span class="error"><?php echo form_error('username'); ?></span></td>
 	  </tr>
-	<?php endforeach; ?>
-	  
+	  <tr>
+	  	<td>您的昵称为：</td>
+	  	<td><input type="text" name="nickname" value="<?php if(isset($userinfo)) echo $userinfo[0]['nickname']; ?><?php echo set_value('nickname');?>"> </td><td><span class="error"><?php echo form_error('nickname');?></span></td>
+	  </tr>
+	  <tr>
+	  	<td>您的Email地址为：</td>
+	  	<td><input type="text" name="email" value="<?php if(isset($userinfo)) echo $userinfo[0]['email']; ?><?php echo set_value('email');?>"></td><td><span class="error"><?php echo form_error('email');?></span></td>
+	  </tr>
 	</table>
-	<!-- <nav>
-  <ul class="pagination">
-    <li>
-      <a href="#" aria-label="Previous">
-        <span aria-hidden="true">&laquo;</span>
-      </a>
-    </li>
-    <li><a href="#">1</a></li>
-    <li><a href="#">2</a></li>
-    <li><a href="#">3</a></li>
-    <li><a href="#">4</a></li>
-    <li><a href="#">5</a></li>
-    <li>
-      <a href="#" aria-label="Next">
-        <span aria-hidden="true">&raquo;</span>
-      </a>
-    </li>
-  </ul>
-</nav> -->
+	<input type="submit" value = '提交'>
+	</form>
+
 
 
 

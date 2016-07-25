@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
-	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="<?php echo base_url(); ?>bootstrap/css/bootstrap.min.css">
 	<style>
 		.tb_st{margin-top: 40px;width: 600px;}
 		.welcom{margin-left: 10px;color: #5E65C1;line-height: 40px;}
@@ -15,7 +15,7 @@
 	  <li role="presentation"><a href="<?php echo site_url('admin/load_cate'); ?>">分类管理</a></li>
 	  <li role="presentation"><a href="<?php echo site_url('admin/load_article'); ?>">文章管理</a></li>
 	  <li role="presentation" ><a href="<?php echo site_url('admin/load_comment'); ?>">评论管理</a></li>
-	  <li role="presentation class="active""><a href="user.php">用户管理</a></li>
+	  <li role="presentation"><a href="<?php echo site_url('admin/load_userinfo'); ?>">隐私管理</a></li>
 	  <li role="presentation"><a href="<?php echo site_url('index/first'); ?>">前台首页</a></li>
 	  <li><a href=" <?php echo site_url('admin/log_out'); ?>">登出</a></li>
 	</ul>
@@ -23,46 +23,23 @@
 
 	<table class="table table-hover tb_st">
 	  <tr>
-	  	<td>这是用户</td>
-	  	<td>[<a href="#">修改</a>][<a href="#">删除</a>]</td>
+	  	<td>您的用户名为：</td>
+	  	<td><?php echo $userinfo[0]['username']; ?></td>
 	  </tr>
 	  <tr>
-	  	<td>这是用户</td>
-	  	<td>[<a href="#">修改</a>][<a href="#">删除</a>]</td>
+	  	<td>您的昵称为：</td>
+	  	<td><?php echo $userinfo[0]['nickname']; ?></td>
 	  </tr>
 	  <tr>
-	  	<td>这是用户</td>
-	  	<td>[<a href="#">修改</a>][<a href="#">删除</a>]</td>
-	  </tr>
-	  <tr>
-	  	<td>这是用户</td>
-	  	<td>[<a href="#">修改</a>][<a href="#">删除</a>]</td>
-	  </tr>
-	  <tr>
-	  	<td>这是用户</td>
-	  	<td>[<a href="#">修改</a>][<a href="#">删除</a>]</td>
+	  	<td>您的Email地址为：</td>
+	  	<td><?php echo $userinfo[0]['email']; ?></td>
 	  </tr>
 	</table>
 	<nav>
-  <ul class="pagination">
-    <li>
-      <a href="#" aria-label="Previous">
-        <span aria-hidden="true">&laquo;</span>
-      </a>
-    </li>
-    <li><a href="#">1</a></li>
-    <li><a href="#">2</a></li>
-    <li><a href="#">3</a></li>
-    <li><a href="#">4</a></li>
-    <li><a href="#">5</a></li>
-    <li>
-      <a href="#" aria-label="Next">
-        <span aria-hidden="true">&raquo;</span>
-      </a>
-    </li>
-  </ul>
+ 
 </nav>
-
+<button><a href="<?php echo site_url('admin/load_change_user'); ?>">修改个人信息</a></button>
+<button><a href="#">修改密码</a></button>
 
 
 

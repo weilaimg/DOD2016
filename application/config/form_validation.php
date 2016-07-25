@@ -84,5 +84,24 @@ $config = array(
                                         ),
                                         
 
-                                    )               
+                                    )   ,
+
+                     'userinfo'=>array(
+                                    array(
+                                            'field' => 'username',
+                                            'label' => '*用户名',
+                                            'rules' => 'alpha_dash|required|max_length[15]'
+                                        ),
+                                    array(
+                                            'field' => 'nickname',
+                                            'label' => '*昵称',
+                                            'rules' => 'required|max_length[10]'
+                                        ),   
+                                    array(
+                                            'field' => 'email',
+                                            'label' => '*Email',
+                                            'rules' => 'required|valid_emails'
+                                        )  
+                                    )  
+
                );

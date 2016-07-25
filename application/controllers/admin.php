@@ -210,6 +210,54 @@ class Admin extends DOD_Controller{
 
 
 
+	/**
+	 * 载入个人信息页
+	 */
+	public function load_userinfo(){
+		$uid = $_SESSION['uid'];
+		$this -> load -> model ('login_model','login');
+		$data['userinfo'] = $this -> login -> check_by_uid($uid);
+		$this -> load -> view('admin/user',$data);
+	}
+
+
+	/**
+	 * 载入修改个人信息页
+	 */
+	public function load_change_user(){
+		$uid = $_SESSION['uid'];
+		$this -> load -> helper('form');
+		$this -> load -> model ('login_model','login');
+		$data['userinfo'] = $this -> login -> check_by_uid($uid);
+		$this -> load -> view('admin/change_user',$data);
+
+	}
+
+	/**
+	 * 验证用户信息修改
+	 */
+	public function check_userinfo(){
+		$this -> load -> library('form_validation');
+		$status = $this->form_validation->run('userinfo');
+
+		if($status){
+			$uid = $_SESSION['uid'];
+			$data = array(
+				'uid' => $uid,
+				'username' => $this -> input -> post('username'),
+				'nickname' => $this -> input -> post('nickname'),
+				'email' => $this -> input -> post('email')
+				);
+			p($_SESSION);
+			$this -> load -> model ('login_model','login');
+			$this -> login -> update_userinfo_by_uid($uid,$data);
+			$_SESSION['nickname'] = $this -> input -> post('nickname');
+			success('admin/load_userinfo','修改成功');
+		} else {
+			$this -> load -> view('admin/change_user');
+		}
+	}
+
 
 
 
