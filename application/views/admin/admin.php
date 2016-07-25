@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,13 +15,13 @@
 	  <li role="presentation" class="active"><a href="<?php echo site_url('admin/load_admin'); ?>">后台主页</a></li>
 	  <li role="presentation" ><a href="<?php echo site_url('admin/load_cate'); ?>">分类管理</a></li>
 	  <li role="presentation"><a href="<?php echo site_url('admin/load_article'); ?>">文章管理</a></li>
-	  <li role="presentation"><a href="comment.php">评论管理</a></li>
+	  <li role="presentation"><a href="<?php echo site_url('admin/load_comment'); ?>">评论管理</a></li>
 	  <li role="presentation"><a href="user.php">用户管理</a></li>
 	  <li role="presentation"><a href="<?php echo site_url('index/first'); ?>">前台首页</a></li>
 	  <li><a href=" <?php echo site_url('admin/log_out'); ?>">登出</a></li>
 	</ul>
 
-	<div class="welcom">你好</div>
+	<div class="welcom"><?php echo $_SESSION['nickname']; ?>你好</div>
 	<table class="table table-hover tb_st">
 
 		<tr>

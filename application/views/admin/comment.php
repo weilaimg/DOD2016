@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
-	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="<?php echo base_url(); ?>bootstrap/css/bootstrap.min.css">
 	<style>
 		.tb_st{margin-top: 40px;width: 600px;}
 		.welcom{margin-left: 10px;color: #5E65C1;line-height: 40px;}
@@ -14,36 +14,23 @@
 	  <li role="presentation"><a href="<?php echo site_url('admin/load_admin'); ?>">后台主页</a></li>
 	  <li role="presentation"><a href="<?php echo site_url('admin/load_cate'); ?>">分类管理</a></li>
 	  <li role="presentation"><a href="<?php echo site_url('admin/load_article'); ?>">文章管理</a></li>
-	  <li role="presentation"  class="active"><a href="comment.php">评论管理</a></li>
+	  <li role="presentation"  class="active"><a href="<?php echo site_url('admin/load_comment'); ?>">评论管理</a></li>
 	  <li role="presentation"><a href="user.php">用户管理</a></li>
 	  <li role="presentation"><a href="<?php echo site_url('index/first'); ?>">前台首页</a></li>
 	  <li><a href=" <?php echo site_url('admin/log_out'); ?>">登出</a></li>
 	</ul>
-	<div class="welcom">你好</div>
+	<div class="welcom"><?php echo $_SESSION['nickname']; ?>你好</div>
 
 	<table class="table table-hover tb_st">
+	  <?php foreach($comment as $v): ?>
 	  <tr>
-	  	<td>这是评论</td>
-	  	<td>[<a href="#">删除</a>]</td>
+	  	<td><?php echo $v['comment']; ?></td>
+	  	<td><em><?php echo $v['title']; ?></em></td>
+	  	<td><h5><small><?php echo date('Y-m-d H:i:s',$v['time']); ?></small></h5></td>
+	  	<td>[<a href="<?php echo site_url('admin/del_comment').'/'.$v['com_id']; ?>">删除</a>]</td>
 	  </tr>
-	  <tr>
-	  	<td>这是评论</td>
-	  	<td>[<a href="#">删除</a>]</td>
-	  </tr>
-	  <tr>
-	  	<td>这是评论</td>
-	  	<td>[<a href="#">删除</a>]</td>
-	  </tr>
-	  <tr>
-	  	<td>这是评论</td>
-	  	<td>[<a href="#">删除</a>]</td>
-	  </tr>
-	  <tr>
-	  	<td>这是评论</td>
-	  	<td>[<a href="#">删除</a>]</td>
-	  </tr>
-	  
-	  
+	<?php endforeach; ?>
+	 
 	</table>
 	<nav>
   <ul class="pagination">

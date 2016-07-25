@@ -175,6 +175,54 @@ class Admin extends DOD_Controller{
 	}
 
 
+	/**
+	 * 删除文章动作
+	 */
+	public function del_article(){
+		$aid = $this -> uri -> segment(3);
+		$this -> load -> model ('article_model','article');
+		$this -> article -> del_article($aid);
+		success ('admin/load_article','删除文章成功');
+	}
+
+
+
+	/**
+	 * 载入后台评论页面
+	 */
+	public function load_comment(){
+		$this -> load -> model ('comment_model','comment');
+		$uid = $_SESSION['uid'];
+		$data['comment']= $this -> comment -> check_by_uid($uid);
+		$this -> load -> view('admin/comment',$data);
+	}
+
+	/**
+	 * 删除评论动作
+	 */
+	public function del_comment(){
+		$com_id =  $this -> uri -> segment(3);
+		$this -> load -> model ('comment_model','comment');
+		$this -> comment -> del_comment($com_id);
+		success('admin/load_comment','删除评论成功');
+
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
