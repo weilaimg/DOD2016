@@ -76,7 +76,7 @@
 			  <div class="warin" style=" font-size:15px;margin-left: 15px;  " ><?php echo form_error('password','<span>','</span>'); ?></div>
 			  </div>
 
-		  <button type="button" class="btn btn-default"><a href="#" style=" text-decoration: none ;color :#000 ">注册</a></button>
+		  <button type="button" class="btn btn-default"><a href="<?php echo site_url('login/load_register'); ?>" style=" text-decoration: none ;color :#000 ">注册</a></button>
 		  <button type="submit" class="btn btn-default">提交</button>
 		</form>
 	</div>
