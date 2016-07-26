@@ -9,11 +9,19 @@ class DOD_Controller extends CI_Controller{
 			}
 		$nickname = $_SESSION['nickname'];
 		$uid = $_SESSION['uid'];
+		$this -> load -> model ('login_model','login');
+		$data = $this -> login ->check_by_uid($uid);
+		$rank = $data[0]['rank'] ; 
+
 		if(!$nickname || !$uid)
 		{
 			success('login/load_login','对不起，请先登录。');
 			// pushs('对不起，请先登录。');
 			// redirect ('');
+		}
+		if($rank == 0)
+		{
+			success ('root/load_admin','欢迎BOSS登入系统');
 		}
 	}
 

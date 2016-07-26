@@ -592,8 +592,22 @@ function pushs($mess){
 }
 
 
-
-
+function confirm($y_url,$n_url,$data)
+{
+	header('Content-Type:text/html;charset=utf-8');
+	$y_url = site_url($y_url);
+	$n_url = site_url($n_url);
+	echo "<script type='text/javascript'>";
+	echo "if(confirm('$data'))
+			{
+		 	  location.href='$y_url';
+			}
+			else
+			{
+		   	  location.href='$n_url';
+			}";
+	echo "</script>";
+}
 
 
 

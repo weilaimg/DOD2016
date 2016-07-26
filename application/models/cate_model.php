@@ -37,6 +37,21 @@ class Cate_model extends CI_Model{
 	 * 删除分类
 	 */
 	public function del_cate($cid){
+		$data = $this -> db -> select ('aid') -> from('article') ->where(array('cid'=>$cid))->get()->result_array();
+		foreach($data as $v):
+			$aid = $v['aid'];
+			$this -> db -> delete('comment' , array('aid' => $aid));
+		endforeach;
+		$this -> db -> delete('article' , array('cid' => $cid));
 		$this -> db -> delete('cate' , array('cid' => $cid));
 	}
+
+
+
+
+
+
+
+
+
 }

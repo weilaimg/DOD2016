@@ -37,5 +37,15 @@ class Comment_model extends CI_Model{
 		$this -> db -> delete('comment',array('com_id'=>$com_id));
 	}
 
+	/**
+	 * 查看所有评论
+	 */
+
+	public function check_all_comment(){
+		$data = $this -> db -> select('comment,comment.time,com_id,title,nickname') -> from('comment')->join('article','comment.aid=article.aid')->join('user','comment.uid=user.uid')->order_by('comment.time','desc')->get()->result_array();
+		return $data;
+	}
+
+
 
 }

@@ -12,21 +12,22 @@
 </head>
 <body>
 	<ul class="nav nav-tabs">
-	  <li role="presentation"><a href="<?php echo site_url('admin/load_admin'); ?>">后台主页</a></li>
-	
-	  <li role="presentation"><a href="<?php echo site_url('admin/load_article'); ?>">文章管理</a></li>
-	  <li role="presentation"><a href="<?php echo site_url('admin/load_comment'); ?>">评论管理</a></li>
-	  <li role="presentation"><a href="<?php echo site_url('admin/load_userinfo'); ?>">隐私管理</a></li>
+	  <li role="presentation"><a href="<?php echo site_url('root/load_admin'); ?>">后台主页</a></li>
+	  <li role="presentation"  class="active"><a href="<?php echo site_url('root/load_cate'); ?>">分类管理</a></li>
+	  <li role="presentation"><a href="<?php echo site_url('root/load_article'); ?>">文章管理</a></li>
+	  <li role="presentation"><a href="<?php echo site_url('root/load_comment'); ?>">评论管理</a></li>
+	  <li role="presentation"><a href="<?php echo site_url('root/load_all_users'); ?>">用户管理</a></li>
+	  <li role="presentation"><a href="<?php echo site_url('root/load_userinfo'); ?>">隐私管理</a></li>
 	  <li role="presentation"><a href="<?php echo site_url('index/first'); ?>">前台首页</a></li>
-	  <li><a href=" <?php echo site_url('admin/log_out'); ?>">登出</a></li>
+	  <li><a href=" <?php echo site_url('root/log_out'); ?>">登出</a></li>
 	</ul>
 	<div class="welcom"><?php echo $_SESSION['nickname']; ?>你好</div>
-<a href="<?php echo site_url('admin/edit_cate'); ?>" class="btn btn-info">添加分类</a>
+<a href="<?php echo site_url('root/edit_cate'); ?>" class="btn btn-info">添加分类</a>
 	<table class="table table-hover tb_st">
 	<?php foreach ($category as $v): ?>
 	  <tr>
 	  	<td><?php echo $v['cname']; ?></td>
-	  	<td>[<a href="<?php echo site_url('admin/edit_cate').'/'.$v['cid']; ?>">修改</a>][<a href="<?php echo site_url('admin/del_cate').'/'.$v['cid']; ?>">删除</a>]</td>
+	  	<td>[<a href="<?php echo site_url('root/edit_cate').'/'.$v['cid']; ?>">修改</a>][<a href="<?php echo site_url('root/del_cate').'/'.$v['cid']; ?>">删除</a>]</td>
 	  </tr>
 	<?php endforeach; ?>
 	  

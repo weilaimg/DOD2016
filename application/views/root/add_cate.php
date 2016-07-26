@@ -13,20 +13,21 @@
 </head>
 <body>
 	<ul class="nav nav-tabs">
-	  <li role="presentation" ><a href="<?php echo site_url('admin/load_admin'); ?>">后台主页</a></li>
-	 
-	  <li role="presentation"><a href="<?php echo site_url('admin/load_article'); ?>">文章管理</a></li>
-	  <li role="presentation"><a href="<?php echo site_url('admin/load_comment'); ?>p">评论管理</a></li>
-	  <li role="presentation"><a href="<?php echo site_url('admin/load_userinfo'); ?>">隐私管理</a></li>
+	  <li role="presentation" ><a href="<?php echo site_url('root/load_admin'); ?>">后台主页</a></li>
+	  <li role="presentation" class="active" ><a href="<?php echo site_url('root/load_cate'); ?>">分类管理</a></li>
+	  <li role="presentation"><a href="<?php echo site_url('root/load_article'); ?>">文章管理</a></li>
+	  <li role="presentation"><a href="<?php echo site_url('root/load_comment'); ?>p">评论管理</a></li>
+	  <li role="presentation"><a href="<?php echo site_url('root/load_all_users'); ?>">用户管理</a></li>
+	  <li role="presentation"><a href="<?php echo site_url('root/load_userinfo'); ?>">隐私管理</a></li>
 	  <li role="presentation"><a href="<?php echo site_url('index/first'); ?>">前台首页</a></li>
-	  <li><a href=" <?php echo site_url('admin/log_out'); ?>">登出</a></li>
+	  <li><a href=" <?php echo site_url('root/log_out'); ?>">登出</a></li>
 	</ul>
 
   
 	<div class="indev">
 
 <div class="input_from">
-<form action="<?php echo site_url('admin/check_cate'); ?>" method="post">
+<form action="<?php echo site_url('root/check_cate'); ?>" method="post">
 
   <div class="form-group">
     <label for="exampleInputEmail1">分类：</label>

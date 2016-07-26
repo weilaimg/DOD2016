@@ -60,12 +60,19 @@ class Article_model extends CI_Model{
 	 * 通过AID删除文章
 	 */
 	public function del_article($aid){
+		$this -> db -> delete('comment', array('aid' => $aid));
 		$this -> db -> delete('article',array('aid'=>$aid));
 	}
 
 
 
+	/**
+	 * 查看全部文章
+	 */
+	public function check_all_article(){
+		$data = $this -> db -> select ('title,info,aid,cname,nickname')->from('article')->join('user','article.uid=user.uid')-> join('cate','article.cid=cate.cid')->order_by('time','desc')->get()->result_array();
+		return $data;
 
-
+	}
 
 }

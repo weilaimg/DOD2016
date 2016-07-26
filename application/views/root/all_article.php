@@ -12,23 +12,26 @@
 </head>
 <body>
 	<ul class="nav nav-tabs">
-	  <li role="presentation"><a href="<?php echo site_url('admin/load_admin'); ?>">后台主页</a></li>
-	  
-	  <li role="presentation" class="active"><a href="<?php echo site_url('admin/load_article'); ?>">文章管理</a></li>
-	  <li role="presentation"><a href="<?php echo site_url('admin/load_comment'); ?>">评论管理</a></li>
-	  <li role="presentation"><a href="<?php echo site_url('admin/load_userinfo'); ?>">隐私管理</a></li>
+	  <li role="presentation"><a href="<?php echo site_url('root/load_admin'); ?>">后台主页</a></li>
+	  <li role="presentation" ><a href="<?php echo site_url('root/load_cate'); ?>">分类管理</a></li>
+	  <li role="presentation" class="active"><a href="<?php echo site_url('root/load_article'); ?>">文章管理</a></li>
+	  <li role="presentation"><a href="<?php echo site_url('root/load_comment'); ?>">评论管理</a></li>
+	  <li role="presentation"><a href="<?php echo site_url('root/load_all_users'); ?>">用户管理</a></li>
+	  <li role="presentation"><a href="<?php echo site_url('root/load_userinfo'); ?>">隐私管理</a></li>
 	  <li role="presentation"><a href="<?php echo site_url('index/first'); ?>">前台首页</a></li>
-	  <li><a href=" <?php echo site_url('admin/log_out'); ?>">登出</a></li>
+	  <li><a href=" <?php echo site_url('root/log_out'); ?>">登出</a></li>
 	</ul>
 	<div class="welcom"><?php echo $_SESSION['nickname']; ?>你好</div>
-<a href="<?php echo site_url('admin/edit_article'); ?>" class="btn btn-info">添加文章</a>
+<a href="<?php echo site_url('root/edit_article'); ?>" class="btn btn-info">添加文章</a>
+<a href="<?php echo site_url('root/load_article'); ?>" class="btn btn-info">查看我的文章</a>
 	<table class="table table-hover tb_st">
-	<?php if(count ($article)) {foreach($article as $v): ?> 
+	<?php foreach($article as $v): ?> 
 	  <tr>
 	  	<td><p><?php echo $v['title']; ?></p><p><em><?php echo $v['info']; ?></em></p></td>
-	  	<td><p><?php echo '分类：'.$v['cname']; ?></p><p>[<a href="<?php echo site_url('admin/change_article').'/'.$v['aid']; ?>">修改</a>][<a href="<?php echo site_url('admin/del_article').'/'.$v['aid']; ?>">删除</a>]</p></td>
+	  	<td>发表者：<?php echo $v['nickname']; ?></td>
+	  	<td><p><?php echo '分类：'.$v['cname']; ?></p><p>[<a href="<?php echo site_url('root/change_article').'/'.$v['aid']; ?>">修改</a>][<a href="<?php echo site_url('root/del_article').'/'.$v['aid']; ?>">删除</a>]</p></td>
 	  </tr>
-	<?php endforeach; } else echo '<tr><td><h2><small><em>暂无文章</em></small></h2></td></tr>';?>
+	<?php endforeach; ?>
 
 	</table>
 <nav>

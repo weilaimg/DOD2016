@@ -11,24 +11,26 @@
 </head>
 <body>
 	<ul class="nav nav-tabs">
-	  <li role="presentation"><a href="<?php echo site_url('admin/load_admin'); ?>">后台主页</a></li>
-	  <li role="presentation"><a href="<?php echo site_url('admin/load_article'); ?>">文章管理</a></li>
-	  <li role="presentation"  class="active"><a href="<?php echo site_url('admin/load_comment'); ?>">评论管理</a></li>
-	  <li role="presentation"><a href="<?php echo site_url('admin/load_userinfo'); ?>">隐私管理</a></li>
+	  <li role="presentation"><a href="<?php echo site_url('root/load_admin'); ?>">后台主页</a></li>
+	  <li role="presentation"><a href="<?php echo site_url('root/load_cate'); ?>">分类管理</a></li>
+	  <li role="presentation"><a href="<?php echo site_url('root/load_article'); ?>">文章管理</a></li>
+	  <li role="presentation"  class="active"><a href="<?php echo site_url('root/load_comment'); ?>">评论管理</a></li>
+	  <li role="presentation"><a href="<?php echo site_url('root/load_all_users'); ?>">用户管理</a></li>
+	  <li role="presentation"><a href="<?php echo site_url('root/load_userinfo'); ?>">隐私管理</a></li>
 	  <li role="presentation"><a href="<?php echo site_url('index/first'); ?>">前台首页</a></li>
-	  <li><a href=" <?php echo site_url('admin/log_out'); ?>">登出</a></li>
+	  <li><a href=" <?php echo site_url('root/log_out'); ?>">登出</a></li>
 	</ul>
 	<div class="welcom"><?php echo $_SESSION['nickname']; ?>你好</div>
-
+	<a href="<?php echo site_url('root/load_all_comment'); ?>" class="btn btn-info">查看全部评论</a>
 	<table class="table table-hover tb_st">
-	  <?php if(count($comment)){ foreach($comment as $v): ?>
+	  <?php foreach($comment as $v): ?>
 	  <tr>
 	  	<td><?php echo $v['comment']; ?></td>
 	  	<td><em><?php echo $v['title']; ?></em></td>
 	  	<td><h5><small><?php echo date('Y-m-d H:i:s',$v['time']); ?></small></h5></td>
-	  	<td>[<a href="<?php echo site_url('admin/del_comment').'/'.$v['com_id']; ?>">删除</a>]</td>
+	  	<td>[<a href="<?php echo site_url('root/del_comment').'/'.$v['com_id']; ?>">删除</a>]</td>
 	  </tr>
-	<?php endforeach;} else echo '<tr><td><h2><small><em>暂无评论</em></small></h2></td></tr>'; ?>
+	<?php endforeach; ?>
 	 
 	</table>
 	<nav>

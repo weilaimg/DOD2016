@@ -11,13 +11,14 @@
 </head>
 <body>
 	<ul class="nav nav-tabs">
-	  <li role="presentation"><a href="<?php echo site_url('admin/load_admin'); ?>">后台主页</a></li>
-	
-	  <li role="presentation"><a href="<?php echo site_url('admin/load_article'); ?>">文章管理</a></li>
-	  <li role="presentation" ><a href="<?php echo site_url('admin/load_comment'); ?>">评论管理</a></li>
-	  <li role="presentation"><a href="<?php echo site_url('admin/load_userinfo'); ?>">隐私管理</a></li>
+	  <li role="presentation"><a href="<?php echo site_url('root/load_admin'); ?>">后台主页</a></li>
+	  <li role="presentation"><a href="<?php echo site_url('root/load_cate'); ?>">分类管理</a></li>
+	  <li role="presentation"><a href="<?php echo site_url('root/load_article'); ?>">文章管理</a></li>
+	  <li role="presentation" ><a href="<?php echo site_url('root/load_comment'); ?>">评论管理</a></li>
+	  <li role="presentation"><a href="<?php echo site_url('root/load_all_users'); ?>">用户管理</a></li>
+	  <li role="presentation"><a href="<?php echo site_url('root/load_userinfo'); ?>">隐私管理</a></li>
 	  <li role="presentation"><a href="<?php echo site_url('index/first'); ?>">前台首页</a></li>
-	  <li><a href=" <?php echo site_url('admin/log_out'); ?>">登出</a></li>
+	  <li><a href=" <?php echo site_url('root/log_out'); ?>">登出</a></li>
 	</ul>
 	<div class="welcom"><?php echo $_SESSION['nickname']; ?>你好</div>
 
@@ -38,8 +39,8 @@
 	<nav>
  
 </nav>
-<button><a href="<?php echo site_url('admin/load_change_user'); ?>">修改个人信息</a></button>
-<button><a href="<?php echo site_url('admin/load_change_passwd'); ?>">修改密码</a></button>
+<button><a href="<?php echo site_url('root/load_change_user'); ?>">修改个人信息</a></button>
+<button><a href="<?php echo site_url('root/load_change_passwd'); ?>">修改密码</a></button>
 
 
 
