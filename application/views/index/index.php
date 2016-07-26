@@ -38,7 +38,7 @@
         <?php  if(isset($nickname)){
 
         echo '<li><a href="' .site_url('admin/load_admin').'">' .$nickname.'你好，点击进入&nbsp[个人中心]</a></li>';
-        echo '<li><a href="'.site_url('admin/log_out').'">登出</a><li>';
+        echo '<li><a href="'.site_url('login/log_out').'">登出</a><li>';
          }
          else {
           echo '<li><a href="' .site_url('login/load_login').'">对不起，您还未登录</a></li>';

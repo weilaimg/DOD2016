@@ -92,6 +92,18 @@ class Login extends CI_Controller{
 
 
 
+	/**
+	 * 退出登陆
+	 */
+	public function log_out (){
+		if(!isset($_SESSION)){
+				session_start();
+			}
+		unset($_SESSION['nickname']);
+		unset($_SESSION['uid']);
+		unset($_SESSION['logtime']);
+		success('index/first','登出成功');
+	}
 
 
 

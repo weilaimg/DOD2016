@@ -322,14 +322,5 @@ class Admin extends DOD_Controller{
 
 
 
-	/**
-	 * 退出登陆
-	 */
-	public function log_out (){
-		unset($_SESSION['nickname']);
-		unset($_SESSION['uid']);
-		unset($_SESSION['logtime']);
-		success('index/first','登出成功');
-	}
 
 }
