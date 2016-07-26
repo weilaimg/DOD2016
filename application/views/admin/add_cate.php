@@ -30,7 +30,7 @@
 
   <div class="form-group">
     <label for="exampleInputEmail1">分类：</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="请输入分类" name="cate" value=" <?php if(isset($cname)) echo $cname; ?><?php echo set_value('cate'); ?>" />
+    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="请输入分类" name="cate" value=" <?php if(isset($cname)) echo $cname; ?><?php echo set_value('cate'); ?>" />
   </div>
  <?php if(validation_errors()) echo '<div class="alert alert-danger" role="alert">'.validation_errors().' </div>'?>
  <input type="text" name='cid' value='<?php if(isset($cid)) echo $cid; ?>'>

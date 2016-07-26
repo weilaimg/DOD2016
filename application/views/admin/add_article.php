@@ -32,7 +32,7 @@
 
   <div class="form-group">
     <label for="exampleInputEmail1">标题：</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="请添写文章标题" name="title" value=" <?php if(isset($article)) echo $article[0]['title']; ?> <?php echo set_value('title'); ?>">
+    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="请添写文章标题" name="title" value=" <?php if(isset($article)) echo $article[0]['title']; ?> <?php echo set_value('title'); ?>">
   </div>
   <?php  if(form_error('title')) echo '<div class="alert alert-danger" role="alert"> '.form_error('title').' </div> '; ?>
 
