@@ -29,7 +29,7 @@
 	  <tr>
 	  	<td><p><?php echo $v['title']; ?></p><p><em><?php echo $v['info']; ?></em></p></td>
 	  	<td>发表者：<?php echo $v['nickname']; ?></td>
-	  	<td><p><?php echo '分类：'.$v['cname']; ?></p><p>[<a href="<?php echo site_url('root/change_article').'/'.$v['aid']; ?>">修改</a>][<a href="<?php echo site_url('root/del_article').'/'.$v['aid']; ?>">删除</a>]</p></td>
+	  	<td><p><?php echo '分类：'.$v['cname']; ?></p><p>[<a href="<?php echo site_url('root/del_article').'/'.$v['aid']; ?>">删除</a>]</p></td>
 	  </tr>
 	<?php endforeach; ?>
 
