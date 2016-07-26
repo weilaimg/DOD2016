@@ -573,6 +573,7 @@ class Root extends CI_Controller{
 		$uid = $this -> uri -> segment(3);
 		$this -> load -> model ('login_model','login');
 		$this -> login -> del_user($uid);
+		success('root/load_all_users','删除用户成功');
 	}
 
 
