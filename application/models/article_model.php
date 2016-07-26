@@ -15,7 +15,7 @@ class Article_model extends CI_Model{
 	 */
 	public function check_info($uid){
 		//$data = $this -> db ->select('title,info,aid')->order_by('time','desc')-> get_where('article',array('uid' => $uid))->result_array();
-		$data = $this -> db -> select ('title,info,aid,cname')->from('article')->where(array('uid'=>$uid)) -> join('cate','article.cid=cate.cid')->get()->result_array();
+		$data = $this -> db -> select ('title,info,aid,cname')->from('article')->where(array('uid'=>$uid)) -> join('cate','article.cid=cate.cid')->order_by('time','desc')->get()->result_array();
 		return $data;
 	}
 

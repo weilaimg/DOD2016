@@ -90,30 +90,14 @@ else {
   echo '<li><h1>您还未登录，暂时不能评论</h1><br /><hr /></li>';
 } ?>
 
-    <?php foreach($comment as $v): ?>
-    <li><h5><?php echo $v['nickname']; ?></h5><p><?php echo $v['comment']; ?></p><h5><small><?php echo date('Y-m-d H:i:s',$v['time']).'&nbsp&nbsp'.$v['com_id'].'楼'; ?></small></h5><br /><hr /></li>
-    <?php endforeach; ?>
+    <?php if(count($comment)){foreach($comment as $v): ?>
+    <li><h5><?php echo $v['nickname']; ?></h5><p><?php echo $v['comment']; ?></p><h5><small><?php echo date('Y-m-d H:i:s',$v['time']); ?></small></h5><br /><hr /></li>
+    <?php endforeach; } else echo '<li><h4><small><em>暂无评论</em></small></h4></li>'?>
     
   </ul>
-
-<ul class="pagination" style="margin-left:40px">
-    <li>
-      <a href="#" aria-label="Previous">
-        <span aria-hidden="true">&laquo;</span>
-      </a>
-    </li>
-    <li><a href="#">1</a></li>
-    <li><a href="#">2</a></li>
-    <li><a href="#">3</a></li>
-    <li><a href="#">4</a></li>
-    <li><a href="#">5</a></li>
-    <li>
-      <a href="#" aria-label="Next">
-        <span aria-hidden="true">&raquo;</span>
-      </a>
-    </li>
-  </ul>
-
+<nav>
+<?php echo $links; ?>
+</nav>
 </div>
 <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
 <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>

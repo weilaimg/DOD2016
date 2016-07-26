@@ -60,17 +60,19 @@
 
 <div class="art">
   <table class="table table-hover tb_st">
-    <?php foreach($article as $v): ?>
+    <?php if(count($article)) {foreach($article as $v): ?>
     <tr>
       <td><p><a href="<?php echo site_url('index/load_text').'/'.$v['aid']; ?>"><?php echo $v['title']; ?></a></p><p><em><?php echo $v['info']; ?></em></p></td>
       <td><p><?php echo$v['nickname']; ?></p><p><em><?php echo date('Y-m-d H-m-s',$v['time']); ?></em></p></td>
     </tr>
-  <?php endforeach; ?>
+  <?php endforeach;} else echo '<tr><td><h2 style="margin-left:40px">暂无文章</h2></td></tr>'; ?>
      
 </table>
 </div>
 
-
+<nav>
+  <?php echo $links; ?>
+</nav>
 
 <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
 <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>

@@ -32,8 +32,44 @@ class Index extends CI_Controller {
 		$this -> load -> model('cate_model','cate');
 		$data['cate'] = $this -> cate ->check();
 		$cid = $this -> uri -> segment(3);
+
+		$this -> load -> library('pagination');
+		$perPage = 5;
+
+		$config['base_url'] = site_url('index/load_article').'/'.$cid;
+		$config['total_rows'] = count($this -> db->get_where('article',array('cid'=> $cid))->result_array());
+		$config['per_page'] = $perPage;
+		$config['uri_segment'] = 4;
+		$config['num_tag_open'] = '<li>';
+		$config['num_tag_close'] = '</li>';
+		$config['full_tag_open'] = '<ul class="pagination" style="margin-left:40px">';
+		$config['full_tag_close'] = '</ul>';
+		$config['prev_tag_open'] = '<li>';
+		$config['prev_tag_close'] = '</li>';
+		$config['next_tag_open'] = '<li>';
+		$config['next_tag_close'] = '</li>';
+		$config['cur_tag_open'] = '<li><a style="color:#000">';
+		$config['cur_tag_close'] = '</a></li>';
+		$config['first_link'] = '第一页';
+		$config['first_tag_open'] = '<li>';
+		$config['first_tag_close'] = '</li>';
+		$config['last_link'] = '最后一页';
+		$config['last_tag_open'] = '<li>';
+		$config['last_tag_close'] = '</li>';
+
+
+		$this -> pagination -> initialize($config);
+		$data ['links'] = $this -> pagination -> create_links();
+		// p($data);die;
+		$offset = $this -> uri ->segment(4);
+		$this -> db -> limit($perPage,$offset);
+
+
+
+
 		$this -> load -> model ('article_model','article');
 		$data['article'] = $this -> article -> check_by_cid($cid);
+
 		$this -> load -> view ('index/index_cate',$data);
 
 	}
@@ -56,6 +92,42 @@ class Index extends CI_Controller {
 		$aid = $this -> uri ->segment(3);
 		$this -> load -> model ('article_model','article');
 		$data['article'] = $this -> article -> full_by_aid($aid);
+
+		$this -> load -> library('pagination');
+		$perPage = 5;
+
+		$config['base_url'] = site_url('index/load_text').'/'.$aid;
+		$config['total_rows'] = count($this -> db->get_where('comment',array('aid'=> $aid))->result_array());
+		$config['per_page'] = $perPage;
+		$config['uri_segment'] = 4;
+		$config['num_tag_open'] = '<li>';
+		$config['num_tag_close'] = '</li>';
+		$config['full_tag_open'] = '<ul class="pagination" style="margin-left:40px">';
+		$config['full_tag_close'] = '</ul>';
+		$config['prev_tag_open'] = '<li>';
+		$config['prev_tag_close'] = '</li>';
+		$config['next_tag_open'] = '<li>';
+		$config['next_tag_close'] = '</li>';
+		$config['cur_tag_open'] = '<li><a style="color:#000">';
+		$config['cur_tag_close'] = '</a></li>';
+		$config['first_link'] = '第一页';
+		$config['first_tag_open'] = '<li>';
+		$config['first_tag_close'] = '</li>';
+		$config['last_link'] = '最后一页';
+		$config['last_tag_open'] = '<li>';
+		$config['last_tag_close'] = '</li>';
+
+
+		$this -> pagination -> initialize($config);
+		$data ['links'] = $this -> pagination -> create_links();
+		// p($data);die;
+		$offset = $this -> uri ->segment(4);
+		$this -> db -> limit($perPage,$offset);
+
+
+
+
+
 		$this -> load -> model ('comment_model','comment');
 		$data['comment'] = $this -> comment -> check_by_aid($aid);
 		

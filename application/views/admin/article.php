@@ -32,23 +32,19 @@
 
 	</table>
 <nav>
-  <ul class="pagination">
-    <li>
+  <!-- <ul class="pagination"> -->
+    <!-- <li>
       <a href="#" aria-label="Previous">
         <span aria-hidden="true">&laquo;</span>
       </a>
-    </li>
-    <li><a href="#">1</a></li>
-    <li><a href="#">2</a></li>
-    <li><a href="#">3</a></li>
-    <li><a href="#">4</a></li>
-    <li><a href="#">5</a></li>
-    <li>
+    </li> -->
+    <?php echo $links; ?>
+    <!-- <li>
       <a href="#" aria-label="Next">
         <span aria-hidden="true">&raquo;</span>
       </a>
-    </li>
-  </ul>
+    </li> -->
+  <!-- </ul> -->
 </nav>
 <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
 <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>

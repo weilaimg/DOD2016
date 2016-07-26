@@ -96,6 +96,37 @@ class Admin extends DOD_Controller{
 	public function load_article(){
 		$uid = $_SESSION['uid'];
 		
+		$this -> load -> library('pagination');
+		$perPage = 3;
+
+		$config['base_url'] = site_url('admin/load_article');
+		$config['total_rows'] = count($this -> db->get_where('article',array('uid'=> $uid))->result_array());
+		$config['per_page'] = $perPage;
+		$config['uri_segment'] = 3;
+		$config['num_tag_open'] = '<li>';
+		$config['num_tag_close'] = '</li>';
+		$config['full_tag_open'] = '<ul class="pagination" style="margin-left:40px">';
+		$config['full_tag_close'] = '</ul>';
+		$config['prev_tag_open'] = '<li>';
+		$config['prev_tag_close'] = '</li>';
+		$config['next_tag_open'] = '<li>';
+		$config['next_tag_close'] = '</li>';
+		$config['cur_tag_open'] = '<li><a style="color:#000">';
+		$config['cur_tag_close'] = '</a></li>';
+		$config['first_link'] = '第一页';
+		$config['first_tag_open'] = '<li>';
+		$config['first_tag_close'] = '</li>';
+		$config['last_link'] = '最后一页';
+		$config['last_tag_open'] = '<li>';
+		$config['last_tag_close'] = '</li>';
+
+		$this -> pagination -> initialize($config);
+		$data ['links'] = $this -> pagination -> create_links();
+		// p($data);die;
+		$offset = $this -> uri ->segment(3);
+		$this -> db -> limit($perPage,$offset);
+
+
 		$this -> load -> model ('article_model','article');
 		$data['article'] = $this -> article -> check_info($uid);
 		
@@ -193,6 +224,40 @@ class Admin extends DOD_Controller{
 	public function load_comment(){
 		$this -> load -> model ('comment_model','comment');
 		$uid = $_SESSION['uid'];
+
+		$this -> load -> library('pagination');
+		$perPage = 3;
+
+		$config['base_url'] = site_url('admin/load_comment');
+		$config['total_rows'] = count($this -> db->get_where('comment',array('uid'=> $uid))->result_array());
+		$config['per_page'] = $perPage;
+		$config['uri_segment'] = 3;
+		$config['num_tag_open'] = '<li>';
+		$config['num_tag_close'] = '</li>';
+		$config['full_tag_open'] = '<ul class="pagination" style="margin-left:40px">';
+		$config['full_tag_close'] = '</ul>';
+		$config['prev_tag_open'] = '<li>';
+		$config['prev_tag_close'] = '</li>';
+		$config['next_tag_open'] = '<li>';
+		$config['next_tag_close'] = '</li>';
+		$config['cur_tag_open'] = '<li><a style="color:#000">';
+		$config['cur_tag_close'] = '</a></li>';
+		$config['first_link'] = '第一页';
+		$config['first_tag_open'] = '<li>';
+		$config['first_tag_close'] = '</li>';
+		$config['last_link'] = '最后一页';
+		$config['last_tag_open'] = '<li>';
+		$config['last_tag_close'] = '</li>';
+
+
+		$this -> pagination -> initialize($config);
+		$data ['links'] = $this -> pagination -> create_links();
+		// p($data);die;
+		$offset = $this -> uri ->segment(3);
+		$this -> db -> limit($perPage,$offset);
+
+
+
 		$data['comment']= $this -> comment -> check_by_uid($uid);
 		$this -> load -> view('admin/comment',$data);
 	}
