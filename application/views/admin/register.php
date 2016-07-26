@@ -64,12 +64,12 @@
 
   <div class="form-group">
     <label for="exampleInputEmail1">用户名：</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="用户名只能包含英文字母、数字、下划线、或破折号" name="username" value="<?php echo set_value('username'); ?>">
+    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="用户名只能包含英文字母、数字、下划线、或破折号" name="username" value="<?php echo set_value('username'); ?>">
   </div>
   <?php if(form_error('username')) echo '<div class="alert alert-danger" role="alert">'. form_error('username').'</div>'  ?>
   <div class="form-group">
     <label for="exampleInputEmail1">昵称：</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="请填写您的昵称" name="nickname" value="<?php echo set_value('nickname'); ?>">
+    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="请填写您的昵称" name="nickname" value="<?php echo set_value('nickname'); ?>">
   </div>
   <?php if(form_error('nickname')) echo '<div class="alert alert-danger" role="alert">'. form_error('nickname').'</div>'  ?>
   <div class="form-group">
