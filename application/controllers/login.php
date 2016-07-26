@@ -82,7 +82,9 @@ class Login extends CI_Controller{
 			$this -> login ->add_user($data);
 			success('login/load_login','注册成功');
 		} else {
-			$this -> load -> view('admin/register');
+			$this -> load -> model('cate_model','cate');
+			$data['cate'] = $this -> cate ->check();
+			$this -> load -> view('admin/register',$data);
 		}
 
 	}
