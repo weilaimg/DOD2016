@@ -33,7 +33,7 @@
 
   <div class="form-group">
     <label for="exampleInputEmail1">标题：</label>
-    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="请添写文章标题" name="title" value=" <?php if(isset($article)) echo $article[0]['title']; ?> <?php echo set_value('title'); ?>">
+    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="请添写文章标题" name="title" value="<?php if(isset($article)) echo $article[0]['title']; ?><?php echo set_value('title'); ?>">
   </div>
   <?php  if(form_error('title')) echo '<div class="alert alert-danger" role="alert"> '.form_error('title').' </div> '; ?>
 
@@ -49,7 +49,7 @@
 <?php foreach ($category as $v): ?>
 
 <label class="radio-inline">
-  <input type="radio" name="cid" id="inlineRadio1" <?php if ($v['cid'] == $article[0]['cid']) echo 'checked="true"'; ?> value="<?php echo $v['cid'] ?>" <?php echo set_radio('cid',$v['cid']); ?> > <?php echo $v['cname'] ?>
+  <input type="radio" name="cid" id="inlineRadio1" <?php if (isset($article) && $v['cid'] == $article[0]['cid']) echo 'checked="true"'; ?> value="<?php echo $v['cid'] ?>" <?php echo set_radio('cid',$v['cid']); ?> > <?php echo $v['cname'] ?>
 </label>
 
 <?php endforeach; ?>
