@@ -7,7 +7,7 @@
   </head>
   <style> 
     .jumb{padding-left: 90px;height: 400px;padding-top: 130px;}
-		.login{margin-top: 20px;margin-left: 30px; padding-left:50px; padding-top:10px;width: 450px; height: 370px;}
+		.login{margin-top: 20px;margin-left: 30px; padding-left:50px; padding-top:10px;width: 450px; height: 420px;}
 		.form_wid{width: 250px;}
 		.warin{color:#F00;font-size: 15px;}
 		body{margin-top: 90px;}
@@ -72,9 +72,17 @@
 
 			  <div class="form-group">
 			  <label for="exampleInputPassword1">密码：</label>
-			  <input type="password" class="form-control form_wid" id="exampleInputPassword1" placeholder="密码" name="password">
+			  <input type="password" class="form-control form_wid" id="exampleInputPassword1" placeholder="密码" name="password" value="<?php echo set_value('password'); ?>">
 			  <div class="warin" style=" font-size:15px;margin-left: 15px;  " ><?php echo form_error('password','<span>','</span>'); ?></div>
 			  </div>
+        <label for="exampleInputEmail1" style="float:left">验证码：</label>
+        <label>
+          <input type="text" class="form-control form_wid" id="exampleInputEmail1" placeholder="验证码" name="captcha"  style="float:left" >
+
+          <img id="captcha_img" src="<?php echo base_url('bootstrap/captcha.php'); ?>?r=<?php echo rand(); ?>" alt="" style="float:right;margin-right:20px" ><a href="javascript:void(0)" onclick="document.getElementById('captcha_img').src='<?php echo base_url('bootstrap/captcha.php'); ?>?r='+Math.random()" style="float:right">看不清？</a>
+          <br /></label>
+          <div class="warin" style=" font-size:15px;margin-left: 15px;  " ><?php echo form_error('captcha','<span>','</span>'); ?></div>
+
 
 		  <button type="button" class="btn btn-default"><a href="<?php echo site_url('login/load_register'); ?>" style=" text-decoration: none ;color :#000 ">注册</a></button>
 		  <button type="submit" class="btn btn-default">提交</button>

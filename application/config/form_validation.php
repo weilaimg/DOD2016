@@ -39,12 +39,17 @@ $config = array(
                                     array(
                                             'field' => 'username',
                                             'label' => '*用户名',
-                                            'rules' => 'required'
+                                            'rules' => 'alpha_dash|required|max_length[15]'
+                                         ),
+                                    array(
+                                            'field' => 'captcha',
+                                            'label' => '*验证码',
+                                            'rules' => 'required|max_length[2]'
                                          ),
                                     array(
                                             'field' => 'password',
                                             'label' => '*密码',
-                                            'rules' => 'required'
+                                            'rules' => 'required|alpha_dash|max_length[15]'
                                          )
 
                                     )  ,
