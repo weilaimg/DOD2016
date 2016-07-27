@@ -20,7 +20,7 @@
     <li role="presentation"><a href="<?php echo site_url('root/load_all_users'); ?>">用户管理</a></li>
     <li role="presentation"><a href="<?php echo site_url('root/load_userinfo'); ?>">隐私管理</a></li>
     <li role="presentation"><a href="<?php echo site_url('index/first'); ?>">前台首页</a></li>
-    <li><a href=" <?php echo site_url('root/log_out'); ?>">登出</a></li>
+    <li><a href=" <?php echo site_url('login/log_out'); ?>">登出</a></li>
   </ul>
 
 
@@ -46,12 +46,12 @@
 <label for="exampleInputPassword1">分类：</label>
 <br />
 
-
-
 <?php foreach ($category as $v): ?>
+
 <label class="radio-inline">
-  <input type="radio" name="cid" id="inlineRadio1" value="<?php echo $v['cid'] ?>" <?php echo set_radio('cid',$v['cid']); ?> > <?php echo $v['cname'] ?>
+  <input type="radio" name="cid" id="inlineRadio1" <?php if ($v['cid'] == $article[0]['cid']) echo 'checked="true"'; ?> value="<?php echo $v['cid'] ?>" <?php echo set_radio('cid',$v['cid']); ?> > <?php echo $v['cname'] ?>
 </label>
+
 <?php endforeach; ?>
 
 

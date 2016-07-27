@@ -63,7 +63,7 @@
 <form method="post" action=" <?php echo site_url('login/check_register'); ?> ">
 
   <div class="form-group">
-    <label for="exampleInputEmail1">用户名：</label>
+    <label for="exampleInputEmail1">登录名：</label>
     <input type="text" class="form-control" id="exampleInputEmail1" placeholder="用户名只能包含英文字母、数字、下划线、或破折号" name="username" value="<?php echo set_value('username'); ?>">
   </div>
   <?php if(form_error('username')) echo '<div class="alert alert-danger" role="alert">'. form_error('username').'</div>'  ?>

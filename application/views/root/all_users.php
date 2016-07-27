@@ -18,18 +18,25 @@
 	  <li role="presentation"><a href="<?php echo site_url('root/load_all_users'); ?>">用户管理</a></li>
 	  <li role="presentation"><a href="<?php echo site_url('root/load_userinfo'); ?>">隐私管理</a></li>
 	  <li role="presentation"><a href="<?php echo site_url('index/first'); ?>">前台首页</a></li>
-	  <li><a href=" <?php echo site_url('root/log_out'); ?>">登出</a></li>
+	  <li><a href=" <?php echo site_url('login/log_out'); ?>">登出</a></li>
 	</ul>
 	<div class="welcom"><?php echo $_SESSION['nickname']; ?>你好</div>
 
 	<table class="table table-hover tb_st">
 	  <?php foreach($users as $v):?>
+	  	<?php if($v['uid']==$_SESSION['uid']){ ?>
+	  		<tr>
+	  		<td>用户名：<?php echo $v['username'];?></td>
+	  		<td>昵称：<?php echo $v['nickname'];?></td>
+	  		<td style=" color: #F00 "><?php echo '**这是我**'; ?></td>
+	  	</tr>
+	  	<?php } else { ?>
 	  	<tr>
 	  		<td>用户名：<?php echo $v['username'];?></td>
 	  		<td>昵称：<?php echo $v['nickname'];?></td>
 	  		<td><?php if($v['rank']==1) echo '[<a href="'.site_url("root/to_be_superuser").'/'.$v['uid'].'">设为超级管理员</a>]'; else echo '[<a href="'.site_url("root/not_be_superuser").'/'.$v['uid'].'">取消超级授权</a>]'; ?> &nbsp&nbsp [<a href="<?php echo site_url('root/del_user').'/'.$v['uid']; ?>">删除该用户</a>]</td>
 	  	</tr>
-	  <?php endforeach; ?>
+	  <?php }endforeach; ?>
 	</table>
 	<nav>
  

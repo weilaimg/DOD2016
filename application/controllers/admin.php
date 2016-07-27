@@ -121,13 +121,18 @@ class Admin extends DOD_Controller{
 		$aid = $this -> uri ->segment(3);
 		$this -> load -> model('article_model','article');
 		$this -> load -> model ('cate_model','cate');
-		$data['category'] = $this -> cate -> check();
-		$data['article'] = $this -> article ->check_by_aid($aid);
-		$this -> load -> view ('admin/add_article',$data);
+
+		$uid = $this -> article -> check_author_by_aid($aid);
+		if($_SESSION['uid']==$uid[0]['uid']){
+			$data['category'] = $this -> cate -> check();
+			$data['article'] = $this -> article ->check_by_aid($aid);
+			$this -> load -> view ('admin/add_article',$data);
+		} else {
+			error('对不起，您没有权限登入此页面');
+		}
+		
 	}
 
-
-	
 	/**
 	 * 删除文章确认弹窗
 	 */
@@ -201,9 +206,14 @@ class Admin extends DOD_Controller{
 	public function del_comment(){
 		$com_id =  $this -> uri -> segment(3);
 		$this -> load -> model ('comment_model','comment');
-		$this -> comment -> del_comment($com_id);
-		success('admin/load_comment','删除评论成功');
 
+		$uid = $this -> comment -> check_uid_by_com_id($com_id);
+		if($_SESSION['uid']==$uid[0]['uid']){
+			$this -> comment -> del_comment($com_id);
+			success('admin/load_comment','删除评论成功');
+		} else {
+			error('对不起，您没有权限登入此页面');
+		}
 	}
 
 

@@ -48,6 +48,15 @@ class Article_model extends CI_Model{
 
 
 	/**
+	 * 通过AID查询文章作者
+	 */
+	public function check_author_by_aid($aid){
+		$data = $this -> db -> select ('uid')->from('article')->where(array('aid'=>$aid))->get()->result_array(); 
+		return $data;
+	}
+
+
+	/**
 	 * 前台通过AID关联3表
 	 */
 	public function full_by_aid($aid){

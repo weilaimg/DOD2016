@@ -29,6 +29,13 @@ class Comment_model extends CI_Model{
 		return $data;
 	}
 
+	/**
+	 * 通过com_id查询用户UID
+	 */
+	public function check_uid_by_com_id($com_id){
+		$data = $this -> db -> select('uid') -> from ('comment')->where(array('com_id'=>$com_id))->get()->result_array();
+		return $data; 
+	}
 
 	/**
 	 * 通过com_id删除评论

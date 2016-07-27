@@ -18,7 +18,7 @@
 	  <li role="presentation" ><a href="<?php echo site_url('admin/load_comment'); ?>">评论管理</a></li>
 	  <li role="presentation"><a href="<?php echo site_url('admin/load_userinfo'); ?>">隐私管理</a></li>
 	  <li role="presentation"><a href="<?php echo site_url('index/first'); ?>">前台首页</a></li>
-	  <li><a href=" <?php echo site_url('admin/log_out'); ?>">登出</a></li>
+	  <li><a href=" <?php echo site_url('login/log_out'); ?>">登出</a></li>
 	</ul>
 	<div class="welcom"><?php echo $_SESSION['nickname']; ?>你好</div>
 	<form action=" <?php echo site_url('admin/check_userinfo');?> " method="post">

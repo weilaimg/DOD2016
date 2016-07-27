@@ -274,9 +274,16 @@ class Root extends CI_Controller{
 		$aid = $this -> uri ->segment(3);
 		$this -> load -> model('article_model','article');
 		$this -> load -> model ('cate_model','cate');
-		$data['category'] = $this -> cate -> check();
-		$data['article'] = $this -> article ->check_by_aid($aid);
-		$this -> load -> view ('root/add_article',$data);
+
+		$uid = $this -> article -> check_author_by_aid($aid);
+		if($_SESSION['uid']==$uid[0]['uid']){
+			$data['category'] = $this -> cate -> check();
+			$data['article'] = $this -> article ->check_by_aid($aid);
+			$this -> load -> view ('root/add_article',$data);
+		} else {
+			error('对不起，您没有权限登入此页面');
+		}
+		
 	}
 
 
