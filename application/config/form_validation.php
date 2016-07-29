@@ -79,6 +79,11 @@ $config = array(
                                             'label' => 'Email',
                                             'rules' => 'required|valid_emails'
                                         ),
+                                    array(
+                                            'field' => 'captcha',
+                                            'label' => '*验证码',
+                                            'rules' => 'required|max_length[2]'
+                                         ),
                                     
                                      )      ,
                      'comment'=>array(

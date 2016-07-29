@@ -87,6 +87,15 @@
     <input type="email" class="form-control" id="exampleInputEmail1" placeholder="请填写您的Email地址" name="email" value="<?php echo set_value('email'); ?>">
     <?php if(form_error('email')) echo '<div class="alert alert-danger" role="alert">'. form_error('email').'</div>';  ?>
   </div>
+
+   
+        <label for="exampleInputEmail1" style="float:left">验证码：</label>
+        <label>
+          <input type="text" class="form-control form_wid" id="exampleInputEmail1" placeholder="验证码" name="captcha"  style="float:left" >
+
+          <img id="captcha_img" src="<?php echo base_url('bootstrap/captcha.php'); ?>?r=<?php echo rand(); ?>" alt="" style="float:right;margin-right:20px" ><a href="javascript:void(0)" onclick="document.getElementById('captcha_img').src='<?php echo base_url('bootstrap/captcha.php'); ?>?r='+Math.random()" style="float:right">看不清？</a>
+          <br /></label>
+          <div class="warin" style=" font-size:15px;margin-left: 15px;  " ><?php echo form_error('captcha','<span>','</span>'); ?></div>
   
   <button type="submit" class="btn btn-default">提交</button>
 </form>

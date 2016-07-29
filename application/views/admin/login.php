@@ -75,6 +75,8 @@
 			  <input type="password" class="form-control form_wid" id="exampleInputPassword1" placeholder="密码" name="password" value="<?php echo set_value('password'); ?>">
 			  <div class="warin" style=" font-size:15px;margin-left: 15px;  " ><?php echo form_error('password','<span>','</span>'); ?></div>
 			  </div>
+
+        
         <label for="exampleInputEmail1" style="float:left">验证码：</label>
         <label>
           <input type="text" class="form-control form_wid" id="exampleInputEmail1" placeholder="验证码" name="captcha"  style="float:left" >

@@ -78,10 +78,20 @@ class Login extends CI_Controller{
 	 * 验证注册输入
 	 */
 	public function check_register(){
+		if(!isset($_SESSION)){
+				session_start();
+			}
 		$this -> load -> helper('form');
 		$this -> load -> library('form_validation');
 		$status = $this-> form_validation ->run('register');
 		if($status){
+
+			$captcha = trim($this -> input -> post('captcha'));
+			if($_SESSION['captcha']!=$captcha){
+				error('验证码输入错误');
+			}
+
+
 			$data = array(
 				'username' => $this -> input -> post('username'),
 				'nickname' => $this -> input -> post('nickname'),
