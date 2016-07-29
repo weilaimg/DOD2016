@@ -555,7 +555,7 @@ class Root extends CI_Controller{
 		$uid = $this -> uri -> segment(3);
 		$this -> load -> model ('login_model','login');
 		$this -> login -> not_be_superuser($uid);
-		success('root/load_all_users','成功删除管理员');
+		success('root/load_all_users','成功取消超级授权');
 	}
 
 
