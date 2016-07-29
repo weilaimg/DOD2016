@@ -101,6 +101,7 @@ class Login extends CI_Controller{
 			
 			$this -> load -> model('login_model','login');
 			$this -> login ->add_user($data);
+			unset($_SESSION['captcha']);
 			success('login/load_login','注册成功');
 		} else {
 			$this -> load -> model('cate_model','cate');
