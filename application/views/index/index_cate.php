@@ -7,7 +7,11 @@
   </head>
   <style>
     .jumb{padding-left: 90px;height: 400px;padding-top: 130px;}
-    .art{width: 800px;}
+    .art{width: 800px;float: left}
+    .by_time{float: right;width: 400px;height: 500px;margin-right: 40px;}
+    .by_time ul {list-style-type:none;margin-top: 20px;line-height: 20px;}
+    .by_time ul li a{font-size: 15px;line-height: 40px;text-decoration: none}
+    .by_time ul li a em{color: #999;font-size: 12px;}
   </style>
 <body style=" margin-top: 90px ">
 <nav class="navbar navbar-default navbar-inverse navbar-fixed-top">
@@ -66,13 +70,25 @@
       <td><p><?php echo$v['nickname']; ?></p><p><em><?php echo date('Y-m-d H:i:s',$v['time']); ?></em></p></td>
     </tr>
   <?php endforeach;} else echo '<tr><td><h2 style="margin-left:40px">暂无文章</h2></td></tr>'; ?>
-     
+  <tr>
+  <td><?php echo $links; ?></td>
+</tr>
 </table>
 </div>
 
-<nav>
-  <?php echo $links; ?>
-</nav>
+
+
+
+<div class="by_time">
+  <ul>
+    <li>最新发布：</li>
+    <?php foreach ($top_10 as $v): ?>
+    <li><a href="<?php echo site_url('index/load_text').'/'.$v['aid']; ?>"><?php echo $v['title']; ?><em>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <?php echo date('Y-m-d',$v['time']); ?></em></a></li>
+  <?php endforeach; ?>
+  </ul>
+
+
+</div>
 
 <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
 <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>

@@ -65,10 +65,10 @@ class Index extends CI_Controller {
 		$this -> db -> limit($perPage,$offset);
 
 
-
-
 		$this -> load -> model ('article_model','article');
 		$data['article'] = $this -> article -> check_by_cid($cid);
+
+		$data['top_10'] = $this -> article -> top_10();
 
 		$this -> load -> view ('index/index_cate',$data);
 

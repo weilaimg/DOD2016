@@ -75,7 +75,7 @@
 <br />
 
 
-<input type="text"  name="aid" value="<?php if(isset($article)) echo $article[0]['aid']; ?><?php echo set_value('aid'); ?>" />
+<input type="hidden"  name="aid" value="<?php if(isset($article)) echo $article[0]['aid']; ?><?php echo set_value('aid'); ?>" />
 
 
   <button type="submit" class="btn btn-default">提交</button>

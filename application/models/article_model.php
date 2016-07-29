@@ -30,6 +30,15 @@ class Article_model extends CI_Model{
 
 
 	/**
+	 * 摘取时间排名前10的文章
+	 */
+	public function top_10(){
+		$data = $this -> db -> select('title,aid,time')->from('article')->limit(10)->order_by('time','desc')->get()->result_array();
+		return $data;
+	}
+
+
+	/**
 	 * 通过AID修改文章
 	 */
 	public function update_by_aid($aid,$data){
@@ -60,7 +69,7 @@ class Article_model extends CI_Model{
 	 * 前台通过AID关联3表
 	 */
 	public function full_by_aid($aid){
-		$data = $this -> db -> select ('aid,title,nickname,info,text,time,cname')->from('article')->where(array('aid'=>$aid))->join('user','article.uid=user.uid')->join('cate','article.cid=cate.cid')->get()->result_array();
+		$data = $this -> db -> select ('aid,title,nickname,info,text,time,cname,article.cid')->from('article')->where(array('aid'=>$aid))->join('user','article.uid=user.uid')->join('cate','article.cid=cate.cid')->get()->result_array();
 		return $data;
 	}
 

@@ -34,7 +34,7 @@
     <input type="text" class="form-control" id="exampleInputEmail1" placeholder="请输入分类" name="cate" value=" <?php if(isset($cname)) echo $cname; ?><?php echo set_value('cate'); ?>" />
   </div>
  <?php if(validation_errors()) echo '<div class="alert alert-danger" role="alert">'.validation_errors().' </div>'?>
- <input type="text" name='cid' value='<?php if(isset($cid)) echo $cid; ?>'>
+ <input type="hidden" name='cid' value='<?php if(isset($cid)) echo $cid; ?>'>
 <button type="submit" class="btn btn-default"> 提交 </button>
 
 </form>

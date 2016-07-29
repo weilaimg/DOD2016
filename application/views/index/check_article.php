@@ -30,9 +30,9 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="<?php echo site_url('index/first'); ?>">首页<span class="sr-only">(current)</span></a></li>
+        <li><a href="<?php echo site_url('index/first'); ?>">首页<span class="sr-only">(current)</span></a></li>
         <?php foreach($cate as $v): ?>
-        <li><a href="<?php echo site_url('index/load_article').'/'.$v['cid']; ?>"><?php echo $v['cname'] ?></a></li>
+        <li <?php if($v['cid']==$article[0]['cid']) echo 'class="active"'; ?>><a href="<?php echo site_url('index/load_article').'/'.$v['cid']; ?>"><?php echo $v['cname'] ?></a></li>
       <?php endforeach; ?>
       
       </ul>
@@ -81,7 +81,7 @@
        if(set_value('comment'))echo set_value('comment');else echo '在此输入评论';
 echo '</textarea><br />';
 if(form_error('comment')) echo '<div class="alert alert-danger" role="alert">'. form_error('comment').'</div><br />' ;
-echo '<input type="text" name="aid" value="'.$article[0]['aid'].'">';
+echo '<input type="hidden" name="aid" value="'.$article[0]['aid'].'">';
 
 echo '<button type="submit" class="btn btn-default">提交评论</button><hr /> </li></form>';
 
