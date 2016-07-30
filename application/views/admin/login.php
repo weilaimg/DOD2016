@@ -2,6 +2,7 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
+  <meta property="qc:admins" content="0500272444675141157636716450600074771674714747716" />
   <title>Document</title>
   <link rel="stylesheet" href="<?php echo base_url();?>bootstrap/css/bootstrap.min.css">
   </head>
