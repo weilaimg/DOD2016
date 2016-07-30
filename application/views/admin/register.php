@@ -49,6 +49,8 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">后台 <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="<?php echo site_url('login/load_login'); ?>">登录</a></li>
+            <li><a href="<?php echo site_url('index/qq_login'); ?>">QQ登录</a></li>
+            
             <li role="separator" class="divider"></li>
             <li><a href="<?php echo site_url('login/load_register'); ?>">注册</a></li>
           </ul>
