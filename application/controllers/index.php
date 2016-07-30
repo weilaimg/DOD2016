@@ -163,18 +163,17 @@ class Index extends CI_Controller {
 
 		$this -> load -> model ('login_model','login');
 		$uid = $this -> login -> check_by_open_id($openid);
-		p($uid);die;
 		if(count($uid)){
 			$data = array(
-				'nickname' = $userinfo['nickname']
+				'nickname' => $userinfo['nickname']
 				);
 			$this -> login -> update_userinfo_by_uid($uid,$data);
 			$_SESSION['uid'] = $uid;
 			$_SESSION['nickname'] = $userinfo['nickname'];
 		} else {
 			$data = array(
-			'nickname' = $userinfo['nickname'],
-			'open_id' = $openid
+			'nickname' => $userinfo['nickname'],
+			'open_id' => $openid
 			);
 
 			$this -> login -> add_user($data);
