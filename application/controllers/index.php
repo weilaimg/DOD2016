@@ -146,6 +146,9 @@ class Index extends CI_Controller {
 	}
 
 	public function callback(){
+		if(!isset($_SESSION)){
+				session_start();
+			}
 		$url = 'Connect2.1/API/qqConnectAPI.php';
 		require_once($url);	
 		//请求AccessToken
@@ -155,9 +158,30 @@ class Index extends CI_Controller {
 		$openid = $oauth -> get_openid();
 		$url = site_url();
 
-		$qc = new QC($_COOKIE['qq_accesstoken'],$_COOKIE['openid']);
+		$qc = new QC($accesstoken,$openid);
 		$userinfo = $qc -> get_user_info ();
-		echo $userinfo['nickname'];
+
+		$this -> load -> model ('login_model','login');
+		$uid = $this -> login -> check_by_open_id($openid);
+		if(count($uid)){
+			$data = array(
+				'nickname' = $userinfo['nickname'],
+				);
+			$this -> login -> update_userinfo_by_uid($uid,$data);
+			$_SESSION['uid'] = $uid;
+			$_SESSION['nickname'] = $userinfo['nickname'];
+		} else {
+			$data = array(
+			'nickname' = $userinfo['nickname'],
+			'open_id' = $openid
+			);
+
+			$this -> login -> add_user($data);
+			$uid = $this -> login -> check_by_open_id($openid);
+			$_SESSION['uid'] = $uid;
+			$_SESSION['nickname'] = $userinfo['nickname'];
+		}
+		success('index/first','登录成功！');
 	}
 
 }

@@ -11,6 +11,14 @@ class Login_model extends CI_Model{
 	}
 
 	/**
+	 * 通过open_id查找用户
+	 */
+	public function check_by_open_id($open_id){
+		$uid = $this -> db -> where(array('open_id'=>$open_id))->get('user')->result_array();
+		return $uid;
+	}
+
+	/**
 	 * 添加用户
 	 */
 	public function add_user($data){
