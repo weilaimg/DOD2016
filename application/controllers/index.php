@@ -146,8 +146,8 @@ class Index extends CI_Controller {
 	}
 
 	public function callback(){
-		require_once('Connect2.1/qqConnectAPI.php');
-
+		$url = 'Connect2.1/API/qqConnectAPI.php';
+		require_once($url);	
 		//请求AccessToken
 
 		$oauth = new Oauth();
