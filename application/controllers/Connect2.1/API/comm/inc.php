@@ -1,0 +1,2 @@
+<?php die('forbidden'); ?>
+{"appid":"101339552","appkey":"a0cab6c0145c2009ed9a5e1984732447","callback":"http://dod.weilaimg.cn/index.php/index/callback","scope":"get_user_info","errorReport":true,"storageType":"file","host":"localhost","user":"QQ_CONNECT_SDK_ROOT","password":"QQ_CONNECT_SDK_ROOT","database":"test"}

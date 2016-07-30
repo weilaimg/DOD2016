@@ -135,9 +135,30 @@ class Index extends CI_Controller {
 		$this -> load -> view('index/check_article',$data);
 	}
 
+	public function qq_login(){
+		$url = 'Connect2.1/API/qqConnectAPI.php';
+		require_once($url);
+
+		// 访问QQ登录页面
+		$oauth = new Oauth();
+		$oauth -> qq_login();
+
+	}
+
+	public function callback(){
+		require_once('Connect2.1/qqConnectAPI.php');
+
+		//请求AccessToken
+
+		$oauth = new Oauth();
+		$accesstoken = $oauth -> qq_callback();
+		$openid = $oauth -> get_openid();
 
 
-
-
+		setcookie('qq_accesstoken',$accesstoken,time()+86400);
+		setcookie('openid',$openid,time()+86400);
+		p($_SESSION);die;
+		 header('Location:index.php');
+	}
 
 }
