@@ -159,7 +159,7 @@ class Index extends CI_Controller {
 		setcookie('openid',$openid,time()+86400);
 		$qc = new QC($_COOKIE['qq_accesstoken'],$_COOKIE['openid']);
 		$userinfo = $qc -> get_user_info ();
-		echo $userinfo;die;
+		p($userinfo);die;
 	}
 
 }
