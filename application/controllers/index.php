@@ -155,11 +155,9 @@ class Index extends CI_Controller {
 		$openid = $oauth -> get_openid();
 		$url = site_url();
 
-		setcookie('qq_accesstoken',$accesstoken,time()+86400);
-		setcookie('openid',$openid,time()+86400);
 		$qc = new QC($_COOKIE['qq_accesstoken'],$_COOKIE['openid']);
 		$userinfo = $qc -> get_user_info ();
-		p($userinfo);die;
+		echo $userinfo['nickname'];
 	}
 
 }
