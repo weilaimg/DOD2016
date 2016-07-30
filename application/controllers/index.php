@@ -168,19 +168,21 @@ class Index extends CI_Controller {
 			$data = array(
 				'nickname' => $userinfo['nickname']
 				);
-			$this -> login -> update_userinfo_by_uid($uid,$data);
+			$this -> login -> update_userinfo_by_uid($uid[0]['uid'],$data);
 			$_SESSION['uid'] = $uid[0]['uid'];
 			$_SESSION['nickname'] = $userinfo['nickname'];
+			$_SESSION['logtime'] = time();
 		} else {
 			$data = array(
 			'nickname' => $userinfo['nickname'],
-			'open_id' => $openid
+			'open_id' => $openid,
 			);
 
 			$this -> login -> add_user($data);
 			$uid = $this -> login -> check_by_open_id($openid);
 			$_SESSION['uid'] = $uid[0]['uid'];
 			$_SESSION['nickname'] = $userinfo['nickname'];
+			$_SESSION['logtime'] = time();
 		}
 		success('index/first','登录成功！');
 	}
